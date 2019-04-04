@@ -2,7 +2,7 @@
 ..\list\main.o: ..\src\UPLib\\UP_System.h
 ..\list\main.o: ..\src\UPLib\\STM32Lib\\stm32f10x.h
 ..\list\main.o: ..\src\UPLib\\STM32Lib\\core_cm3.h
-..\list\main.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\list\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\list\main.o: ..\src\UPLib\\STM32Lib\\system_stm32f10x.h
 ..\list\main.o: ..\src\UPLib\\STM32Lib\\stm32f10x_conf.h
 ..\list\main.o: ..\src\UPLib\\STM32Lib\\stm32f10x_adc.h
@@ -24,8 +24,8 @@
 ..\list\main.o: ..\src\UPLib\\UP_UART.h
 ..\list\main.o: ..\src\UPLib\\UP_CDS5500.h
 ..\list\main.o: ..\src\UPLib\\UP_Exti.h
-..\list\main.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\list\main.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\list\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\list\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\list\main.o: ..\src\UPLib\\UP_Bluetooth.h
 ..\list\main.o: ..\src\UPLib\\UP_Zigbee.h
 ..\list\main.o: ..\src\UPLib\\UP_USR232.h

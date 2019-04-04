@@ -186,171 +186,87 @@ unsigned char Stage()//检测是否在台上
 #define BD  150	 //
 #define LD  180  //
 
-/*unsigned char Fence()//在台下检测朝向
+unsigned char Fence()//在台下检测朝向
 {
-	AD1 = UP_ADC_GetValue(1); //底部前方红外光电
-	AD2 = UP_ADC_GetValue(2); //底部右侧红外光电
-	AD3 = UP_ADC_GetValue(3); //底部后方红外光电
-	AD4 = UP_ADC_GetValue(4); //底部左侧红外光电
-	AD5 = UP_ADC_GetValue(5); //前红外测距传感器
-	AD6 = UP_ADC_GetValue(6); //右红外测距传感器
-	AD7 = UP_ADC_GetValue(7); //后红外测距传感器
-	AD8 = UP_ADC_GetValue(8); //左红外测距传感器
+	AD1=UP_ADC_GetValue(1);
+	AD2=UP_ADC_GetValue(2);
+	AD3=UP_ADC_GetValue(3);
 	
-	
-	AD4=UP_ADC_GetIO(4);  //底部前红外光电
-	AD5=UP_ADC_GetIO(5);  //底部后红外光电
-  AD6=UP_ADC_GetIO(6);  //上部前红外光电
-	AD7=UP_ADC_GetIO(7);  //上部后红外光电
-	
-	if(AD4==0)
-	   return 0;  //前方对准擂台
-	else if(AD5==0&&AD7==1)
-	   return 1;  //后方对准擂台
-	else if(AD4==1&&AD5==1)
-		 return 2;  //都没对准
-	else if(AD4==0&&AD6==0)
-	   return 3;  //后方对准围栏
-	else if(AD5==0&&AD7==0)
-		 return 4;  //前方对准围栏
- 	  
-/////////////////////////对擂台，一个测距检测到/////////////////////////
-	if((AD3 < 1000)&&(AD2 > 1000)&&(AD4 > 1000)&&(AD5 > FD)&&(AD6 < RD)&&(AD7 < BD)&&(AD8 < LD))//前测距和后红外
-		{
-			return 1;		//在台下，后方对擂台
-		}
-	
-	if((AD4 < 1000)&&(AD1 > 1000)&&(AD3 > 1000)&&(AD5 < FD)&&(AD6 > RD)&&(AD7 < BD)&&(AD8 < LD))//右侧距左红外
-		{
-			return 2;		//在台下，左侧对擂台
-		}		
-	
-	if((AD1 < 1000)&&(AD2 > 1000)&&(AD4 > 1000)&&(AD5 < FD)&&(AD6 < RD)&&(AD7 > BD)&&(AD8 < LD))//后测距前红外
-		{
-			return 3;		//在台下，前方对擂台
-		}		
-	
-	if((AD2 < 1000)&&(AD1 > 1000)&&(AD3 > 1000)&&(AD5 < FD)&&(AD6 < RD)&&(AD7 < BD)&&(AD8 > LD))//左测距右红外
-		{
-			return 4;		//在台下，右侧对擂台
-		}	
-/////////////////////////对围栏，两个相邻测距检测到/////////////////////////
-	
-	if((AD2 > 1000)&&(AD3 > 1000)&&(AD5 > FD)&&(AD6 < RD)&&(AD7 < BD)&&(AD8 > LD))
-		{
-			return 5;		//在台下，前左检测到围栏
-		}	
-	if((AD3 > 1000)&&(AD4 > 1000)&&(AD5 > FD)&&(AD6 > RD)&&(AD7 < BD)&&(AD8 < LD))
-		{
-			return 6;		//在台下，前右检测到围栏
-		}		
-
-	if((AD1 > 1000)&&(AD4 > 1000)&&(AD5 < FD)&&(AD6 > RD)&&(AD7 > BD)&&(AD8 < LD))
-		{
-			return 7;		//在台下，后右检测到围栏
-		}	
-	if((AD1 > 1000)&&(AD2 > 1000)&&(AD5 < FD)&&(AD6 < RD)&&(AD7 > BD)&&(AD8 > LD))
-		{
-			return 8;		//在台下，后左检测到围栏
-		}		
-
-/////////////////////////台上有敌人，两个相对测距检测到/////////////////////////
-	if((AD5 > FD)&&(AD6 < RD)&&(AD7 > BD)&&(AD8 < LD))
-		{
-			return 9;		//在台下，前方或后方有台上敌人
-		}	
-	
-	if((AD5 < FD)&&(AD6 > RD)&&(AD7 < BD)&&(AD8 > LD))
-		{
-			return 10;	//在台下，左侧或右侧由台上敌人
-		}	
-		
-/////////////////////////三侧有障碍，三个测距检测到/////////////////////////
-	if((AD5 > FD)&&(AD6 > RD)&&(AD7 < BD)&&(AD8 > LD))
-		{
-			return 11;	//在台下，前方、左侧和右侧检测到围栏
-		}	
-	if((AD5 > FD)&&(AD6 > RD)&&(AD7 > BD)&&(AD8 < LD))
-		{
-			return 12;	//在台下，前方、右侧和后方检测到围栏
-		}	
-	if((AD5 > FD)&&(AD6 < RD)&&(AD7 > BD)&&(AD8 > LD))
-		{
-			return 13;	//在台下，前方、左侧和后方检测到围栏
-		}	
-	if((AD5 < FD)&&(AD6 > RD)&&(AD7 > BD)&&(AD8 > LD))
-		{
-			return 14;	//在台下，右侧、左侧和后方检测到围栏
-		}	
-		
-		
-/////////////////////////斜对擂台，两个红外光电检测到/////////////////////////
-	if((AD1 < 1000)&&(AD2 < 1000)&&(AD5 < FD)&&(AD6 < RD))
-		{
-			return 15;	//在台下，前方和右侧对擂台其他传感器没检测到
-		}	
-	if((AD1 < 1000)&&(AD4 < 1000)&&(AD5 < FD)&&(AD8 < LD))
-		{
-			return 16;	//在台下，前方和左侧对擂台其他传感器没检测到
-		}
-	if((AD2 < 1000)&&(AD3 < 1000)&&(AD6 < FD)&&(AD7 < RD))
-		{
-			return 17;	//在台下，后方和右侧对擂台其他传感器没检测到
-		}	
-	if((AD3 < 1000)&&(AD4 < 1000)&&(AD7 < FD)&&(AD8 < LD))
-		{
-			return 18;	//在台下，后方和左侧对擂台其他传感器没检测到
-		}
-	
-	//////////////
-	else
-		{
-			return 101;//错误
-		}
+	if(AD1<2900&&AD2<2700&&AD3<1000) //台下
+		return 0;
+	else 
+		return 1;
 		
 }
-*/
+
 
 
 
 unsigned char Edge()  //检测边缘
 {
+	int g1=2920;
+	int g2=3120;
+	int g3=1580;
+	
+	
+	
 	AD1=UP_ADC_GetValue(1);
 	AD2=UP_ADC_GetValue(2);
 	AD3=UP_ADC_GetValue(3);
-	/*方案1
-	if(AD1>2700&&AD2>2400&&AD3>1300)
-		return 0;  //在中间
-	else if(AD1<2700&&AD2<2400&&AD3<1300)
-		return 1;  //角落后方检测到边缘
-	else if(AD1<2800&&AD2<2600&&AD3<1000)
-	  return 2;  //角落前方检测到边缘
-	
-	else if(AD1<2700&&AD2<2400&&AD3<1600)
-		return 3;  //正后方检测到边缘
-	else if(AD1<3000&&AD2<2800&&AD3<1300)
-	  return 4;  //正前方检测到边缘
-	else 
-		return 5;  //错误情况
-	*/
-	
+  //方案1
+	/*
+  if(AD1<3000)
+		f1=1;
+	if(AD2<2500)
+		f2=1;
+	if(AD3<1400)
+		f3=1;
+	if(f1+f2+f3==0)
+		return 0; //在边缘内
+	else if(f1+f2+f3==1){
+    if(f1==1)
+			return 1;  //左端出去
+		if(f2==1)
+			return 2;  //右端出去
+		if(f3==1)
+			return 3;  //前端出去
+	}
+	else if(f1+f2+f3==2){
+	  if(f1==1&&f2==1)
+			return 4;  //后方出去
+		if(f1==1&&f3==1)
+			return 5;  //左半部出去
+		if(f2==1&&f3==1)
+			return 6;  //右半部出去
+	}
+	else if(f1+f2+f3==3){
+	    return 7;  //全部出去
+	}*/
+  	
 	//方案2
-	if(AD1>3000&&AD2>2500&&AD3>1400)
+  
+	if(AD1>g1&&AD2>g2&&AD3>g3)
 		return 0;  //在中间
-	else if(AD1>3000&&AD2>2500&&AD3<1400)
-		return 1;  //3在外面
-	else if(AD1<3000&&AD2<2500&&AD3>1400)
-		return 2;  //1,2在外面
-	else if(AD1>3000&&AD2<2500&&AD3>1400)
-		return 3;  //2在外面
-	else if(AD1<3000&&AD2>2500&&AD3>1400)
-		return 4;  //1在外面
-	else if(AD1<3000&&AD2>2500&&AD3<1400)
-		return 5;  //1,3在外面
-	else if(AD1>3000&&AD2<2500&&AD3<1400)
-		return 6;  //2,3在外面
+	else if(AD1<g1&&AD2>g2&&AD3>g3)
+		return 1;  //1在外面
+	else if(AD1>g1&&AD2<g2&&AD3>g3)
+		return 2;  //2在外面
+	else if(AD1>g1&&AD2>g2&&AD3<g3)
+		return 3;  //3在外面
+	else if(AD1<g1&&AD2<g2&&AD3>g3)
+		return 4;  //1,2
+	else if(AD1<g1&&AD2>g2&&AD3<g3)
+		return 5;  //1,3
+	else if(AD1>g1&&AD2<g2&&AD3<g3)
+		return 6;  //2,3
+	else if(AD1<2673&&AD2<2697&&AD3<855)
+		return 8;  //角落正方向
+	else if(AD1<2629&&AD2<2620&&AD3<1013)
+		return 9;  //角落负方向
 	else
-		return 7;  //异常
+		return 7;  //其他
+	
+		
 	
 	
 	
@@ -465,9 +381,8 @@ void TimerHadler0(u32 timerchannel)
 {
 	
    //g_Timer0Count++;              //相应的变量加1
-	AD1=UP_ADC_GetValue(1);
-	AD2=UP_ADC_GetValue(2);
-	AD3=UP_ADC_GetValue(3);
+	 nStage=Fence();
+	 nEdge=Edge();
 	 nFence=UStage();
 	 UP_LCD_ShowInt(0,0,nFence);
 }
@@ -514,13 +429,10 @@ int main()
 	UP_System_Init();
 	while(1)
 	{
-		UP_LCD_ShowInt(0,0,AD1);
-		UP_LCD_ShowInt(0,1,AD2);
-		UP_LCD_ShowInt(0,2,AD3);
-		
-		  move(1000,1000);
-			UP_delay_ms(800);
-		
+		UP_LCD_ShowInt(0,2,AD1);
+		UP_LCD_ShowInt(6,2,AD2);
+		UP_LCD_ShowInt(3,0,AD3);
+	 if(nStage==0){
 		if(nFence==0)
 		{
 			move(-700,-700);
@@ -565,6 +477,51 @@ int main()
 			move(650,-650);                //500,-500
 			UP_delay_ms(150);              //150
 		}
+	}else if(nStage==1){
+	  if(nEdge==0){
+		  move(600,600);
+			UP_delay_ms(5);
+		}else if(nEdge==1){
+		  move(600,-600);
+			UP_delay_ms(800);
+			move(500,500);
+			UP_delay_ms(100);
+		}else if(nEdge==2){
+		  move(-600,600);
+			UP_delay_ms(800);
+			move(500,500);
+			UP_delay_ms(200);
+		}else if(nEdge==3){
+		  move(-800,-800);
+			UP_delay_ms(600);
+			move(600,-600);
+			UP_delay_ms(800);
+		}else if(nEdge==8){
+		  move(-500,-500);
+			UP_delay_ms(800);
+		}else if(nEdge==9){
+		  move(500,500);
+			UP_delay_ms(600);
+		}else if(nEdge==7){
+		  move(-400,-400);
+		  UP_delay_ms(100);
+		  move(-600,600);
+			UP_delay_ms(600);
+		}else if(nEdge==4){
+			move(800,800);
+			UP_delay_ms(800);
+		}else if(nEdge==5){
+		  move(600,-600);
+			UP_delay_ms(800);
+			move(600,600);
+			UP_delay_ms(200);
+		}else if(nEdge==6){
+		  move(-600,600);
+      UP_delay_ms(800);	
+      move(600,600);
+			UP_delay_ms(200);			
+		 }
+	}
 	
 		/*
 		UP_delay_ms(1500);
