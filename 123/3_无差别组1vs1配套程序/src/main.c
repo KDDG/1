@@ -30,7 +30,6 @@ int You = 0;		//有有无敌人
 int Hou = 0;		//后有无敌人
 int Zuo = 0;		//左有无敌人
 int Summ = 0;	//前后左右几个检测到		
-
 int left = 0;
 int right = 0;
 
@@ -42,8 +41,7 @@ int ne = 8;			//后搁浅计时
 
 int QX = 0;			//倾斜
 
-
-
+  
 void zhong()    //上台默认动作
 {
 	UP_CDS_SetAngle(5, 384, 800);
@@ -51,6 +49,7 @@ void zhong()    //上台默认动作
 	UP_CDS_SetAngle(7, 640, 800);
 	UP_CDS_SetAngle(8, 384, 800);
 }
+//
 
 void qding()  //收前爪
 {
@@ -60,6 +59,7 @@ void qding()  //收前爪
 	UP_CDS_SetAngle(5, 1000, 800);
 	UP_CDS_SetAngle(6, 24, 800);
 }
+//
 
 void hding()  //收后爪
 {
@@ -69,6 +69,7 @@ void hding()  //收后爪
 	UP_CDS_SetAngle(7, 24, 800);
 	UP_CDS_SetAngle(8, 1000, 800);
 }
+//
 
 void chanzi()  //上台后铲子状态
 {
@@ -77,6 +78,7 @@ void chanzi()  //上台后铲子状态
 	UP_CDS_SetAngle(7, 244, 800);
 	UP_CDS_SetAngle(8, 780, 800);
 }
+//
 
 void move(int leftforward,int rightforward)
 {
@@ -101,7 +103,7 @@ void move(int leftforward,int rightforward)
 	UP_CDS_SetSpeed(1, left);
 	UP_CDS_SetSpeed(2, right);
 }
-
+//
 
 void qianshangtai()  //前上台
 {		move(0,0);	//停下来，防止前一状态是转弯改变上台方向
@@ -127,6 +129,7 @@ void qianshangtai()  //前上台
 		move(1000,1000);	//
 		UP_delay_ms(2000);
 }
+//
 
 void houshangtai()  //后上台
 {
@@ -149,7 +152,7 @@ void houshangtai()  //后上台
 		move(1000,1000);	//
 		UP_delay_ms(1500);
 }
-
+//
 
 unsigned char Stage()//检测是否在台上
 {
@@ -179,7 +182,7 @@ unsigned char Stage()//检测是否在台上
 		return 4;   //卡在擂台右侧在地面左侧在擂台
 	}
 }
-
+//
 
 #define FD  150  //
 #define RD  150	 //
@@ -198,15 +201,13 @@ unsigned char Fence()//在台下检测朝向
 		return 1;
 		
 }
-
-
-
+//
 
 unsigned char Edge()  //检测边缘
 {
-	int g1=2920;
-	int g2=3120;
-	int g3=1580;
+	int g1=2610;          //2920
+	int g2=2900;          //3120
+	int g3=1200;          //1580
 	
 	
 	
@@ -265,12 +266,8 @@ unsigned char Edge()  //检测边缘
 		return 9;  //角落负方向
 	else
 		return 7;  //其他
-	
-		
-	
-	
-	
 }
+//
 
 unsigned char Enemy()   //检测敌人
 {
@@ -312,7 +309,7 @@ unsigned char Enemy()   //检测敌人
 		return 103;//错误
 	}
 }
-
+//
 
 unsigned char UStage()
 {
@@ -371,10 +368,7 @@ unsigned char UStage()
 			return 7;
 		}
 }  
-
-
-
-
+//
 
 /*定义Timer中断入口函数*/
 void TimerHadler0(u32 timerchannel)
@@ -384,8 +378,9 @@ void TimerHadler0(u32 timerchannel)
 	 nStage=Fence();
 	 nEdge=Edge();
 	 nFence=UStage();
-	 UP_LCD_ShowInt(0,0,nFence);
+	 UP_LCD_ShowInt(0,3,nEdge);
 }
+//
 
 /*外部中断检测上台
 void UP_ExtiHadler1(u32 extichannel)
@@ -408,8 +403,7 @@ void UP_ExtiHadler1(u32 extichannel)
 		}
 }
 */
-
-
+//
 
 //主函数
 int main()
@@ -479,46 +473,40 @@ int main()
 		}
 	}else if(nStage==1){
 	  if(nEdge==0){
-		  move(600,600);
+		  move(400,400);
 			UP_delay_ms(5);
 		}else if(nEdge==1){
 		  move(600,-600);
-			UP_delay_ms(800);
+			UP_delay_ms(600);
 			move(500,500);
 			UP_delay_ms(100);
 		}else if(nEdge==2){
 		  move(-600,600);
-			UP_delay_ms(800);
+			UP_delay_ms(600);
 			move(500,500);
 			UP_delay_ms(200);
 		}else if(nEdge==3){
-		  move(-800,-800);
+		  move(-600,-600);
 			UP_delay_ms(600);
 			move(600,-600);
-			UP_delay_ms(800);
-		}else if(nEdge==8){
-		  move(-500,-500);
-			UP_delay_ms(800);
-		}else if(nEdge==9){
-		  move(500,500);
 			UP_delay_ms(600);
 		}else if(nEdge==7){
-		  move(-400,-400);
+		  move(-500,-500);
 		  UP_delay_ms(100);
-		  move(-600,600);
-			UP_delay_ms(600);
+		  move(-700,700);
+			UP_delay_ms(1000);
 		}else if(nEdge==4){
-			move(800,800);
-			UP_delay_ms(800);
-		}else if(nEdge==5){
-		  move(600,-600);
-			UP_delay_ms(800);
 			move(600,600);
+			UP_delay_ms(600);
+		}else if(nEdge==5){
+		  move(700,-700);
+			UP_delay_ms(800);
+			move(500,500);
 			UP_delay_ms(200);
 		}else if(nEdge==6){
-		  move(-600,600);
+		  move(-700,700);
       UP_delay_ms(800);	
-      move(600,600);
+      move(500,500);
 			UP_delay_ms(200);			
 		 }
 	}

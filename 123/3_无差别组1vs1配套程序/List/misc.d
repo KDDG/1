@@ -2,7 +2,7 @@
 ..\list\misc.o: ..\src\UpLib\STM32Lib\misc.h
 ..\list\misc.o: ..\src\UpLib\STM32Lib\stm32f10x.h
 ..\list\misc.o: ..\src\UpLib\STM32Lib\core_cm3.h
-..\list\misc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\list\misc.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\list\misc.o: ..\src\UpLib\STM32Lib\system_stm32f10x.h
 ..\list\misc.o: ..\src\UpLib\STM32Lib\stm32f10x_conf.h
 ..\list\misc.o: ..\src\UpLib\STM32Lib\stm32f10x_adc.h

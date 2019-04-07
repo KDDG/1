@@ -1,7 +1,7 @@
 ..\list\up_uart.o: ..\src\UpLib\UP_UART.c
 ..\list\up_uart.o: ..\src\UpLib\STM32Lib\\stm32f10x.h
 ..\list\up_uart.o: ..\src\UpLib\STM32Lib\\core_cm3.h
-..\list\up_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\list\up_uart.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\list\up_uart.o: ..\src\UpLib\STM32Lib\\system_stm32f10x.h
 ..\list\up_uart.o: ..\src\UpLib\STM32Lib\\stm32f10x_conf.h
 ..\list\up_uart.o: ..\src\UpLib\STM32Lib\\stm32f10x_adc.h
@@ -24,8 +24,8 @@
 ..\list\up_uart.o: ..\src\UpLib\UP_Key.h
 ..\list\up_uart.o: ..\src\UpLib\UP_CDS5500.h
 ..\list\up_uart.o: ..\src\UpLib\UP_Exti.h
-..\list\up_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\list\up_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\list\up_uart.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\list\up_uart.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\list\up_uart.o: ..\src\UpLib\UP_Bluetooth.h
 ..\list\up_uart.o: ..\src\UpLib\UP_Zigbee.h
 ..\list\up_uart.o: ..\src\UpLib\UP_USR232.h
