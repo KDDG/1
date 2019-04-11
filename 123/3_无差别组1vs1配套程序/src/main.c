@@ -191,14 +191,60 @@ unsigned char Stage()//检测是否在台上
 
 unsigned char Fence()//在台下检测朝向
 {
-	AD1=UP_ADC_GetValue(1);
-	AD2=UP_ADC_GetValue(2);
-	AD3=UP_ADC_GetValue(3);
-	
-	if(AD1<2900&&AD2<2700&&AD3<1000) //台下
-		return 0;
-	else 
-		return 1;
+	 AD4=UP_ADC_GetIO(4); //下 后
+	 AD5=UP_ADC_GetIO(5); //上 后
+	 AD6=UP_ADC_GetIO(6); //下 前
+	 AD7=UP_ADC_GetIO(7); //上 前
+	 AD8=UP_ADC_GetIO(8); //下 右
+	 AD9=UP_ADC_GetIO(9); //下 左
+	 
+	  /*正对着台*/
+	  if(AD4==0&&AD5==0&&AD6==0&&AD7==1&&AD8==1&&AD9==1)
+		{
+			 return 0;
+    }
+		
+	  /*背对着台*/
+		else if(AD4==0&&AD6==0&&AD7==0&&AD5==1&&AD8==1&&AD9==1)
+		{
+			 return 1;	
+		}
+		
+		/*侧对着台*/
+		else if(AD8==0&&AD9==0)
+		{
+			return 2;			
+		}
+		
+		/*左后角*/
+	  else if(AD9==0&&AD4==0&&AD5==0)
+		{
+			return 3;
+		}
+		
+		/*右后角*/
+		else if(AD8==0&&AD4==0&&AD5==0)
+		{
+			return 4;
+		}
+		
+		/*左前角*/
+		else if(AD9==0&&AD6==0&&AD7==0)
+		{
+			return 5;
+		}
+		
+		/*右前角*/
+		else if(AD8==0&&AD6==0&&AD7==0)
+		{
+			return 6;
+		}
+		
+		/*其他*/
+		else 
+		{
+			return 7;
+		}
 		
 }
 //
@@ -313,60 +359,20 @@ unsigned char Enemy()   //检测敌人
 
 unsigned char UStage()
 {
-	 AD4=UP_ADC_GetIO(4); //下 后
-	 AD5=UP_ADC_GetIO(5); //上 后
-	 AD6=UP_ADC_GetIO(6); //下 前
-	 AD7=UP_ADC_GetIO(7); //上 前
-	 AD8=UP_ADC_GetIO(8); //下 右
-	 AD9=UP_ADC_GetIO(9); //下 左
-	 
-	  /*正对着台*/
-	  if(AD4==0&&AD5==0&&AD6==0&&AD7==1&&AD8==1&&AD9==1)
-		{
-			 return 0;
-    }
-		
-	  /*背对着台*/
-		else if(AD4==0&&AD6==0&&AD7==0&&AD5==1&&AD8==1&&AD9==1)
-		{
-			 return 1;	
-		}
-		
-		/*侧对着台*/
-		else if(AD8==0&&AD9==0)
-		{
-			return 2;			
-		}
-		
-		/*左后角*/
-	  else if(AD9==0&&AD4==0&&AD5==0)
-		{
-			return 3;
-		}
-		
-		/*右后角*/
-		else if(AD8==0&&AD4==0&&AD5==0)
-		{
-			return 4;
-		}
-		
-		/*左前角*/
-		else if(AD9==0&&AD6==0&&AD7==0)
-		{
-			return 5;
-		}
-		
-		/*右前角*/
-		else if(AD8==0&&AD6==0&&AD7==0)
-		{
-			return 6;
-		}
-		
-		/*其他*/
-		else 
-		{
-			return 7;
-		}
+	int a1,a2,a3,b1,b2,b3;
+	AD1=UP_ADC_GetValue(1);
+	AD2=UP_ADC_GetValue(2);
+	AD3=UP_ADC_GetValue(3); 
+	a1=2200;
+	a2=2500;
+	a3=800;
+	b1=3300;
+	b2=3400;
+	b3=2200;
+	if(AD1>b1||AD2>b2||AD3>b3)
+	  return 0;
+	else 
+	  return 1;
 }  
 //
 
@@ -375,10 +381,11 @@ void TimerHadler0(u32 timerchannel)
 {
 	
    //g_Timer0Count++;              //相应的变量加1
-	 nStage=Fence();
-	 nEdge=Edge();
-	 nFence=UStage();
-	 UP_LCD_ShowInt(0,3,nEdge);
+	 nStage=UStage();
+	 if(nStage==0)
+	   nFence=Fence();
+	 else if(nStage==1)
+		 nEdge=Edge();
 }
 //
 
@@ -423,6 +430,11 @@ int main()
 	UP_System_Init();
 	while(1)
 	{
+		UP_LCD_ClearScreen();
+		UP_LCD_ShowInt(3,3,nFence);
+		UP_LCD_ShowInt(0,3,nStage);
+		UP_LCD_ShowInt(5,3,nEdge);
+		
 		UP_LCD_ShowInt(0,2,AD1);
 		UP_LCD_ShowInt(6,2,AD2);
 		UP_LCD_ShowInt(3,0,AD3);
@@ -432,7 +444,7 @@ int main()
 			move(-700,-700);
 			UP_delay_ms(400);
 			move(1000,1000);
-			UP_delay_ms(1000);
+			UP_delay_ms(650);
 		}
 		else if(nFence==1)
 		{
@@ -468,8 +480,8 @@ int main()
 		}
 		else if(nFence==7)
 		{
-			move(650,-650);                //500,-500
-			UP_delay_ms(150);              //150
+			move(450,-450);                //500,-500
+			UP_delay_ms(50);              //150
 		}
 	}else if(nStage==1){
 	  if(nEdge==0){
@@ -493,8 +505,8 @@ int main()
 		}else if(nEdge==7){
 		  move(-500,-500);
 		  UP_delay_ms(100);
-		  move(-700,700);
-			UP_delay_ms(1000);
+		  move(-500,500);
+			UP_delay_ms(200);
 		}else if(nEdge==4){
 			move(600,600);
 			UP_delay_ms(600);

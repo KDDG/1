@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\List\UP_ADC.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\List\UP_ADC.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Apr 06 21:51:41 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Apr 10 22:28:18 2019
 <BR><P>
 <H3>Maximum Stack Usage =        140 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -333,7 +333,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
 </UL>
 
 <P><STRONG><a name="[4e]"></a>__aeabi_i2f</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fflti.o(.text))
@@ -341,11 +341,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
 </UL>
 
-<P><STRONG><a name="[8c]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
+<P><STRONG><a name="[8d]"></a>__aeabi_f2iz</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, ffixi.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
 </UL>
 
 <P><STRONG><a name="[b5]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
@@ -408,13 +408,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_Init
 </UL>
 
-<P><STRONG><a name="[a8]"></a>CDS_UARTHadler</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, up_vga.o(i.CDS_UARTHadler))
+<P><STRONG><a name="[a9]"></a>CDS_UARTHadler</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, up_vga.o(i.CDS_UARTHadler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = CDS_UARTHadler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[5f]"></a>CheckCDSSend</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, up_uart.o(i.CheckCDSSend))
+<P><STRONG><a name="[60]"></a>CheckCDSSend</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, up_uart.o(i.CheckCDSSend))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = CheckCDSSend
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
@@ -444,7 +444,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6e]"></a>DMA_DeInit</STRONG> (Thumb, 218 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_DeInit))
-<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_DMAConfiguration
 </UL>
 
@@ -452,14 +452,14 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a2]"></a>DMA_ITConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_ITConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
+<P><STRONG><a name="[a3]"></a>DMA_ITConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_dma.o(i.DMA_ITConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
 </UL>
 
 <P><STRONG><a name="[6f]"></a>DMA_Init</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, stm32f10x_dma.o(i.DMA_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = DMA_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
+<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_DMAConfiguration
 </UL>
 
@@ -468,7 +468,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[88]"></a>Delay_us</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, up_lcd.o(i.Delay_us))
-<BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
+<BR><BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Fill
 </UL>
 
@@ -548,10 +548,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerHadler0
 </UL>
 
-<P><STRONG><a name="[58]"></a>Fence</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, main.o(i.Fence))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Fence
+<P><STRONG><a name="[58]"></a>Fence</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, main.o(i.Fence))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Fence
 </UL>
-<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetValue
+<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetIO
 </UL>
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerHadler0
 </UL>
@@ -562,12 +562,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Exti_Init
 </UL>
 
-<P><STRONG><a name="[5e]"></a>GPIO_Init</STRONG> (Thumb, 162 bytes, Stack size 20 bytes, stm32f10x_gpio.o(i.GPIO_Init))
+<P><STRONG><a name="[5f]"></a>GPIO_Init</STRONG> (Thumb, 162 bytes, Stack size 20 bytes, stm32f10x_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcds_Config
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcds_Config
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Key_Init
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Exti_Init
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Bluetooth_Init
@@ -585,182 +585,181 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Key_Init
 </UL>
 
-<P><STRONG><a name="[59]"></a>LCD_WriteCmd</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, up_lcd.o(i.LCD_WriteCmd))
+<P><STRONG><a name="[5a]"></a>LCD_WriteCmd</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, up_lcd.o(i.LCD_WriteCmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_WriteCmd &rArr; SPIByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPIByte
+<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPIByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Turn
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Fill
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
 </UL>
 
-<P><STRONG><a name="[5b]"></a>LCD_WriteData</STRONG> (Thumb, 70 bytes, Stack size 12 bytes, up_lcd.o(i.LCD_WriteData))
+<P><STRONG><a name="[5c]"></a>LCD_WriteData</STRONG> (Thumb, 70 bytes, Stack size 12 bytes, up_lcd.o(i.LCD_WriteData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = LCD_WriteData &rArr; SPIByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPIByte
+<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPIByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Fill
 </UL>
 
-<P><STRONG><a name="[5c]"></a>Lcds_Config</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, up_lcd.o(i.Lcds_Config))
+<P><STRONG><a name="[5d]"></a>Lcds_Config</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, up_lcd.o(i.Lcds_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Lcds_Config &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
 </UL>
 
-<P><STRONG><a name="[91]"></a>NVIC_Init</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
+<P><STRONG><a name="[92]"></a>NVIC_Init</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
 </UL>
 
-<P><STRONG><a name="[90]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_PriorityGroupConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
+<P><STRONG><a name="[91]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_PriorityGroupConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
 </UL>
 
-<P><STRONG><a name="[8f]"></a>NVIC_SetVectorTable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, misc.o(i.NVIC_SetVectorTable))
-<BR><BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
+<P><STRONG><a name="[90]"></a>NVIC_SetVectorTable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, misc.o(i.NVIC_SetVectorTable))
+<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
 </UL>
 
 <P><STRONG><a name="[6d]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_DMAConfiguration
 </UL>
 
-<P><STRONG><a name="[93]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
+<P><STRONG><a name="[94]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
 </UL>
 
-<P><STRONG><a name="[63]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphResetCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<P><STRONG><a name="[64]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphResetCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
 </UL>
 
-<P><STRONG><a name="[5d]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcds_Config
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
+<P><STRONG><a name="[5e]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcds_Config
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Key_Init
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Bluetooth_Init
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_Init
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_IOout_GPIOInit
 </UL>
 
-<P><STRONG><a name="[64]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<P><STRONG><a name="[65]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
 </UL>
 
-<P><STRONG><a name="[a9]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 128 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[aa]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 128 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[5a]"></a>SPIByte</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, up_lcd.o(i.SPIByte))
+<P><STRONG><a name="[5b]"></a>SPIByte</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, up_lcd.o(i.SPIByte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SPIByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteData
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteData
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 </UL>
 
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, up_it.o(i.SysTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SysTick_Handler &rArr; CheckCDSSend
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CheckCDSSend
+<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CheckCDSSend
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[47]"></a>SystemInit</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SystemInit &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
 <P><STRONG><a name="[27]"></a>TIM3_IRQHandler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, up_it.o(i.TIM3_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIM3_IRQHandler &rArr; UP_Timer_Pro
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Pro
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Pro
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[9e]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
-<BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Pro
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<P><STRONG><a name="[9f]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
+<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Pro
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
 </UL>
 
-<P><STRONG><a name="[95]"></a>TIM_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
+<P><STRONG><a name="[96]"></a>TIM_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
 </UL>
 
-<P><STRONG><a name="[96]"></a>TIM_CtrlPWMOutputs</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_CtrlPWMOutputs))
-<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
+<P><STRONG><a name="[97]"></a>TIM_CtrlPWMOutputs</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_CtrlPWMOutputs))
+<BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
 </UL>
 
-<P><STRONG><a name="[62]"></a>TIM_DeInit</STRONG> (Thumb, 304 bytes, Stack size 8 bytes, stm32f10x_tim.o(i.TIM_DeInit))
+<P><STRONG><a name="[63]"></a>TIM_DeInit</STRONG> (Thumb, 304 bytes, Stack size 8 bytes, stm32f10x_tim.o(i.TIM_DeInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM_DeInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
-</UL>
-
-<P><STRONG><a name="[a0]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Pro
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
 </UL>
 
-<P><STRONG><a name="[9f]"></a>TIM_ITConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ITConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<P><STRONG><a name="[a1]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
+<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Pro
 </UL>
 
-<P><STRONG><a name="[9a]"></a>TIM_OC1Init</STRONG> (Thumb, 106 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_OC1Init))
+<P><STRONG><a name="[a0]"></a>TIM_ITConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ITConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+</UL>
+
+<P><STRONG><a name="[9b]"></a>TIM_OC1Init</STRONG> (Thumb, 106 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_OC1Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_OC1Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>TIM_OC2Init</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC2Init))
+<P><STRONG><a name="[9c]"></a>TIM_OC2Init</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC2Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC2Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
 </UL>
 
-<P><STRONG><a name="[9c]"></a>TIM_OC3Init</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC3Init))
+<P><STRONG><a name="[9d]"></a>TIM_OC3Init</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC3Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC3Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
 </UL>
 
-<P><STRONG><a name="[9d]"></a>TIM_OC4Init</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC4Init))
+<P><STRONG><a name="[9e]"></a>TIM_OC4Init</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC4Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC4Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
 </UL>
 
-<P><STRONG><a name="[94]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 114 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_TimeBaseInit))
+<P><STRONG><a name="[95]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 114 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_TimeBaseInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_TimeBaseInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
 </UL>
 
-<P><STRONG><a name="[49]"></a>TimerHadler0</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, main.o(i.TimerHadler0))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = TimerHadler0 &rArr; UP_LCD_ShowInt &rArr; UP_LCD_ShowString &rArr; LCD_WriteCmd &rArr; SPIByte
+<P><STRONG><a name="[49]"></a>TimerHadler0</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(i.TimerHadler0))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TimerHadler0 &rArr; Edge
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UStage
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UStage
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fence
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Edge
 </UL>
@@ -799,19 +798,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_Init
 </UL>
 
-<P><STRONG><a name="[aa]"></a>UP_ADC_GetIO</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, up_adc.o(i.UP_ADC_GetIO))
-<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UStage
+<P><STRONG><a name="[59]"></a>UP_ADC_GetIO</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, up_adc.o(i.UP_ADC_GetIO))
+<BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fence
 </UL>
 
 <P><STRONG><a name="[57]"></a>UP_ADC_GetValue</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, up_adc.o(i.UP_ADC_GetValue))
-<BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fence
+<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UStage
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Edge
 </UL>
 
 <P><STRONG><a name="[71]"></a>UP_ADC_Init</STRONG> (Thumb, 376 bytes, Stack size 32 bytes, up_adc.o(i.UP_ADC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = UP_ADC_Init &rArr; UP_ADC_DMAConfiguration &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_StartCalibration
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_SoftwareStartConvCmd
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ResetCalibration
@@ -821,19 +820,19 @@ Global Symbols
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_GetCalibrationStatus
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_DMACmd
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Cmd
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_DMAConfiguration
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
 <P><STRONG><a name="[7b]"></a>UP_Bluetooth_Init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, up_bluetooth.o(i.UP_Bluetooth_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = UP_Bluetooth_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
 <P><STRONG><a name="[7c]"></a>UP_CDS_SetSpeed</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, up_cds5500.o(i.UP_CDS_SetSpeed))
@@ -847,10 +846,10 @@ Global Symbols
 <P><STRONG><a name="[7e]"></a>UP_Exti_Init</STRONG> (Thumb, 294 bytes, Stack size 24 bytes, up_exti.o(i.UP_Exti_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = UP_Exti_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EXTILineConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
 <P><STRONG><a name="[82]"></a>UP_IOout_AllLow</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, up_ioout.o(i.UP_IOout_AllLow))
@@ -861,8 +860,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = UP_IOout_GPIOInit &rArr; GPIO_PinRemapConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinRemapConfig
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_IOout_AllLow
 </UL>
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_IOout_Init
@@ -873,17 +872,17 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_IOout_GPIOInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
 <P><STRONG><a name="[84]"></a>UP_Key_Init</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, up_key.o(i.UP_Key_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = UP_Key_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
 <P><STRONG><a name="[86]"></a>UP_LCD_ClearScreen</STRONG> (Thumb, 18 bytes, Stack size 4 bytes, up_lcd.o(i.UP_LCD_ClearScreen))
@@ -891,14 +890,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Fill
 </UL>
-<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
 </UL>
 
 <P><STRONG><a name="[87]"></a>UP_LCD_Fill</STRONG> (Thumb, 66 bytes, Stack size 20 bytes, up_lcd.o(i.UP_LCD_Fill))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = UP_LCD_Fill &rArr; LCD_WriteCmd &rArr; SPIByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteData
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteData
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ClearScreen
@@ -907,76 +907,75 @@ Global Symbols
 <P><STRONG><a name="[89]"></a>UP_LCD_Init</STRONG> (Thumb, 250 bytes, Stack size 8 bytes, up_lcd.o(i.UP_LCD_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = UP_LCD_Init &rArr; UP_LCD_ClearScreen &rArr; UP_LCD_Fill &rArr; LCD_WriteCmd &rArr; SPIByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Turn
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ClearScreen
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcds_Config
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ClearScreen
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Turn
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcds_Config
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
-<P><STRONG><a name="[66]"></a>UP_LCD_ShowInt</STRONG> (Thumb, 102 bytes, Stack size 40 bytes, up_lcd.o(i.UP_LCD_ShowInt))
+<P><STRONG><a name="[8c]"></a>UP_LCD_ShowInt</STRONG> (Thumb, 102 bytes, Stack size 40 bytes, up_lcd.o(i.UP_LCD_ShowInt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = UP_LCD_ShowInt &rArr; UP_LCD_ShowString &rArr; LCD_WriteCmd &rArr; SPIByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowString
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerHadler0
 </UL>
 
-<P><STRONG><a name="[8d]"></a>UP_LCD_ShowString</STRONG> (Thumb, 82 bytes, Stack size 20 bytes, up_lcd.o(i.UP_LCD_ShowString))
+<P><STRONG><a name="[8e]"></a>UP_LCD_ShowString</STRONG> (Thumb, 82 bytes, Stack size 20 bytes, up_lcd.o(i.UP_LCD_ShowString))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = UP_LCD_ShowString &rArr; LCD_WriteCmd &rArr; SPIByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteData
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteData
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
 </UL>
 
 <P><STRONG><a name="[8b]"></a>UP_LCD_Turn</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, up_lcd.o(i.UP_LCD_Turn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UP_LCD_Turn &rArr; LCD_WriteCmd &rArr; SPIByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
+<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
 </UL>
 
-<P><STRONG><a name="[8e]"></a>UP_NVIC_Configuration</STRONG> (Thumb, 396 bytes, Stack size 32 bytes, up_nvic.o(i.UP_NVIC_Configuration))
+<P><STRONG><a name="[8f]"></a>UP_NVIC_Configuration</STRONG> (Thumb, 396 bytes, Stack size 32 bytes, up_nvic.o(i.UP_NVIC_Configuration))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = UP_NVIC_Configuration &rArr; NVIC_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetVectorTable
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetVectorTable
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
-<P><STRONG><a name="[92]"></a>UP_PWM_Init</STRONG> (Thumb, 158 bytes, Stack size 40 bytes, up_pwm.o(i.UP_PWM_Init))
+<P><STRONG><a name="[93]"></a>UP_PWM_Init</STRONG> (Thumb, 158 bytes, Stack size 40 bytes, up_pwm.o(i.UP_PWM_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = UP_PWM_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CtrlPWMOutputs
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CtrlPWMOutputs
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
-<P><STRONG><a name="[97]"></a>UP_System_Init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, up_system.o(i.UP_System_Init))
+<P><STRONG><a name="[98]"></a>UP_System_Init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, up_system.o(i.UP_System_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = UP_System_Init &rArr; UP_UART_Init &rArr; UP_UART_DMAConfiguration &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_Init
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_PWM_Init
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_NVIC_Configuration
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Key_Init
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_IOout_Init
@@ -992,28 +991,28 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[99]"></a>UP_Timer_Init</STRONG> (Thumb, 278 bytes, Stack size 56 bytes, up_timer.o(i.UP_Timer_Init))
+<P><STRONG><a name="[9a]"></a>UP_Timer_Init</STRONG> (Thumb, 278 bytes, Stack size 56 bytes, up_timer.o(i.UP_Timer_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = UP_Timer_Init &rArr; TIM_OC4Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
-<P><STRONG><a name="[61]"></a>UP_Timer_Pro</STRONG> (Thumb, 466 bytes, Stack size 32 bytes, up_timer.o(i.UP_Timer_Pro))
+<P><STRONG><a name="[62]"></a>UP_Timer_Pro</STRONG> (Thumb, 466 bytes, Stack size 32 bytes, up_timer.o(i.UP_Timer_Pro))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UP_Timer_Pro
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 </UL>
@@ -1022,32 +1021,32 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a1]"></a>UP_UART_DMAConfiguration</STRONG> (Thumb, 86 bytes, Stack size 56 bytes, up_uart.o(i.UP_UART_DMAConfiguration))
+<P><STRONG><a name="[a2]"></a>UP_UART_DMAConfiguration</STRONG> (Thumb, 86 bytes, Stack size 56 bytes, up_uart.o(i.UP_UART_DMAConfiguration))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = UP_UART_DMAConfiguration &rArr; DMA_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ITConfig
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ITConfig
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
 </UL>
 
-<P><STRONG><a name="[98]"></a>UP_UART_Init</STRONG> (Thumb, 680 bytes, Stack size 64 bytes, up_uart.o(i.UP_UART_Init))
+<P><STRONG><a name="[99]"></a>UP_UART_Init</STRONG> (Thumb, 680 bytes, Stack size 64 bytes, up_uart.o(i.UP_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = UP_UART_Init &rArr; UP_UART_DMAConfiguration &rArr; DMA_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClockInit
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClockInit
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearFlag
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 </UL>
 
 <P><STRONG><a name="[7d]"></a>UP_Uart3_SendCDSFrame</STRONG> (Thumb, 142 bytes, Stack size 36 bytes, up_uart.o(i.UP_Uart3_SendCDSFrame))
@@ -1083,7 +1082,7 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearITPendingBit
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ClearFlag
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CDS_UARTHadler
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CDS_UARTHadler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
@@ -1091,7 +1090,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART5_IRQHandler
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART4_IRQHandler
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 </UL>
 
@@ -1102,18 +1101,18 @@ Global Symbols
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a4]"></a>USART_ClockInit</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, stm32f10x_usart.o(i.USART_ClockInit))
+<P><STRONG><a name="[a5]"></a>USART_ClockInit</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, stm32f10x_usart.o(i.USART_ClockInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USART_ClockInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
 </UL>
 
-<P><STRONG><a name="[a6]"></a>USART_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<P><STRONG><a name="[a7]"></a>USART_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
 </UL>
 
-<P><STRONG><a name="[a3]"></a>USART_DMACmd</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_DMACmd))
-<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
+<P><STRONG><a name="[a4]"></a>USART_DMACmd</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_DMACmd))
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_DMAConfiguration
 </UL>
 
 <P><STRONG><a name="[6a]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
@@ -1132,18 +1131,18 @@ Global Symbols
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a7]"></a>USART_ITConfig</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, stm32f10x_usart.o(i.USART_ITConfig))
+<P><STRONG><a name="[a8]"></a>USART_ITConfig</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, stm32f10x_usart.o(i.USART_ITConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USART_ITConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
 </UL>
 
-<P><STRONG><a name="[a5]"></a>USART_Init</STRONG> (Thumb, 166 bytes, Stack size 32 bytes, stm32f10x_usart.o(i.USART_Init))
+<P><STRONG><a name="[a6]"></a>USART_Init</STRONG> (Thumb, 166 bytes, Stack size 32 bytes, stm32f10x_usart.o(i.USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_UART_Init
 </UL>
 
 <P><STRONG><a name="[69]"></a>USART_ReceiveData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
@@ -1153,10 +1152,10 @@ Global Symbols
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[65]"></a>UStage</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, main.o(i.UStage))
+<P><STRONG><a name="[66]"></a>UStage</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, main.o(i.UStage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = UStage
 </UL>
-<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetIO
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetValue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerHadler0
 </UL>
@@ -1167,14 +1166,15 @@ Global Symbols
 
 <P><STRONG><a name="[b9]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 426 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 456 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = main &rArr; UP_System_Init &rArr; UP_UART_Init &rArr; UP_UART_DMAConfiguration &rArr; DMA_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_delay_ms
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_SetHadler
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_EnableIT
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ClearScreen
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
@@ -1190,7 +1190,7 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[60]"></a>SetSysClockTo72</STRONG> (Thumb, 160 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
+<P><STRONG><a name="[61]"></a>SetSysClockTo72</STRONG> (Thumb, 160 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
