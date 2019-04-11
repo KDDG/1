@@ -449,39 +449,39 @@ int main()
 		else if(nFence==1)
 		{
 			move(500,500);
-			UP_delay_ms(300);
-			move(650,-650);                //500,-500
-			UP_delay_ms(500);              //320
+			UP_delay_ms(1);
+			move(550,-550);                //500,-500
+			UP_delay_ms(1);              //320
 		}
 		else if(nFence==2)
 		{
-			move(650,-650);               //500,-500
-			UP_delay_ms(320);             //320
+			move(550,-550);               //500,-500
+			UP_delay_ms(1);             //320
 		}
     else if(nFence==3)
 		{
 			move(500,500);
-			UP_delay_ms(700);
+			UP_delay_ms(500);
 		}
 		else if(nFence==4)
 		{
 			move(500,500);
-			UP_delay_ms(700);
+			UP_delay_ms(500);
 		}
 		else if(nFence==5)
 		{
 			move(-500,-500);
-			UP_delay_ms(700);
+			UP_delay_ms(500);
 		}
 		else if(nFence==6)
 		{
 			move(-500,-500);
-			UP_delay_ms(700);
+			UP_delay_ms(500);
 		}
 		else if(nFence==7)
 		{
-			move(450,-450);                //500,-500
-			UP_delay_ms(50);              //150
+			move(550,-550);                //500,-500
+			UP_delay_ms(1);              //150
 		}
 	}else if(nStage==1){
 	  if(nEdge==0){
