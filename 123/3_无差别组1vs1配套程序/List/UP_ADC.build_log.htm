@@ -3,33 +3,44 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: μVision V5.27.1.0
-Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 1, 1, LIC=TA3Z9-4P322-33VM1-CNDJJ-3KTDS-3ABYD
+IDE-Version: μVision V5.25.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: NB 517524653@qq.co, Hewlett-Packard, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.27.1.0
-Toolchain Path:  C:\ChengXu\Keil_v5\ARM\ARMCC\Bin
+Toolchain:       MDK-Lite  Version: 5.25.2.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 6 (build 750)
 Assembler:       Armasm.exe V5.06 update 6 (build 750)
 Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
 Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.27.1.0
-Dialog DLL:      DCM.DLL V1.17.2.0
-Target DLL:      Segger\JL2CM3.dll V2.99.35.0
-Dialog DLL:      TCM.DLL V1.36.1.0
+CPU DLL:         SARMCM3.DLL V5.25.2.0
+Dialog DLL:      DCM.DLL V1.17.1.0
+Target DLL:      Segger\JL2CM3.dll V2.99.29.0
+Dialog DLL:      TCM.DLL V1.35.1.0
  
 <h2>Project:</h2>
-F:\下载\学习资料\2019机器人大赛车型武术\2019\ChengXu\1\123\3_无差别组1vs1配套程序\prj\UP_EX-Star Demo.uvproj
-Project File Date:  04/04/2019
+D:\A比赛\1\1\123\3_无差别组1vs1配套程序\prj\UP_EX-Star Demo.uvproj
+Project File Date:  04/14/2019
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\ChengXu\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-After Build - User command #1: C:\ChengXu\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin -o  ../List/UP_ADC.bin  ../List/UP_ADC.axf
-"..\List\UP_ADC.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:01
+compiling main.c...
+..\src\main.c(369): warning:  #550-D: variable "a1"  was set but never used
+  	int a1,a2,a3,b1,b2,b3;
+..\src\main.c(369): warning:  #550-D: variable "a2"  was set but never used
+  	int a1,a2,a3,b1,b2,b3;
+..\src\main.c(369): warning:  #550-D: variable "a3"  was set but never used
+  	int a1,a2,a3,b1,b2,b3;
+..\src\main.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=10500 RO-data=336 RW-data=292 ZI-data=1508  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin -o  ../List/UP_ADC.bin  ../List/UP_ADC.axf
+"..\List\UP_ADC.axf" - 0 Error(s), 3 Warning(s).
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

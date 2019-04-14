@@ -1,7 +1,7 @@
 ..\list\up_uart_parse.o: ..\src\UpLib\UP_UART_Parse.c
 ..\list\up_uart_parse.o: ..\src\UpLib\STM32Lib\\stm32f10x.h
 ..\list\up_uart_parse.o: ..\src\UpLib\STM32Lib\\core_cm3.h
-..\list\up_uart_parse.o: C:\ChengXu\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\list\up_uart_parse.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\list\up_uart_parse.o: ..\src\UpLib\STM32Lib\\system_stm32f10x.h
 ..\list\up_uart_parse.o: ..\src\UpLib\STM32Lib\\stm32f10x_conf.h
 ..\list\up_uart_parse.o: ..\src\UpLib\STM32Lib\\stm32f10x_adc.h

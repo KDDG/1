@@ -317,12 +317,14 @@ unsigned char Edge()  //检测边缘
 
 unsigned char Enemy()   //检测敌人
 {
-	AD1 = UP_ADC_GetValue(1); //前红外测距传感器
-	AD2 = UP_ADC_GetValue(2); //右前红外光电传感器
-	AD3 = UP_ADC_GetValue(3); //
-	AD4 = UP_ADC_GetValue(4); //左中红外光电传感器
-	AD5 = UP_ADC_GetValue(5); //左中红外光电传感器
+	AD7 = UP_ADC_GetIO(7); //前红外测距传感器
 	
+	if(AD7==0)
+		return 1;
+	else 
+		return 0;
+	
+	/*
 	if ((AD1 > 100)&&(AD2 > 100)&&(AD3 > 100)&&(AD4 > 100))
 	{
 		return 0;  //无敌人
@@ -352,8 +354,13 @@ unsigned char Enemy()   //检测敌人
 	}
 	else
 	{
+		
+		
+		
+		
 		return 103;//错误
 	}
+	*/
 }
 //
 
@@ -384,8 +391,10 @@ void TimerHadler0(u32 timerchannel)
 	 nStage=UStage();
 	 if(nStage==0)
 	   nFence=Fence();
-	 else if(nStage==1)
+	 else if(nStage==1){
 		 nEdge=Edge();
+	   nEnemy=Enemy();
+	 }
 }
 //
 
@@ -424,21 +433,27 @@ int main()
   UP_Exti_SetHadler(UP_ExtiHadler1);
 */	
 	
- 
-	
 	//系统初始化
 	UP_System_Init();
+	UP_CDS_SetMode(3,CDS_SEVMODE);
+	UP_CDS_SetMode(6,CDS_SEVMODE);
+ 
+	UP_CDS_SetAngle(3,1008,800);
+	UP_CDS_SetAngle(6,0,800);
 	while(1)
 	{
 		UP_LCD_ClearScreen();
 		UP_LCD_ShowInt(3,3,nFence);
 		UP_LCD_ShowInt(0,3,nStage);
 		UP_LCD_ShowInt(5,3,nEdge);
+		UP_LCD_ShowInt(7,3,nEnemy);
 		
 		UP_LCD_ShowInt(0,2,AD1);
 		UP_LCD_ShowInt(6,2,AD2);
 		UP_LCD_ShowInt(3,0,AD3);
 	 if(nStage==0){
+		UP_CDS_SetAngle(3,1008,800);
+	  UP_CDS_SetAngle(6,0,800);
 		if(nFence==0)
 		{
 			move(-700,-700);
@@ -484,40 +499,55 @@ int main()
 			UP_delay_us(1);              //150
 		}
 	}else if(nStage==1){
+  	UP_CDS_SetAngle(3,496,800);
+	  UP_CDS_SetAngle(6,512,800);
 	  if(nEdge==0){
-		  move(400,400);
-			UP_delay_ms(5);
+			if(nEnemy==1){
+			  move(600,600);
+				UP_delay_us(15);
+			}else{
+		    move(400,400);
+			  UP_delay_ms(5);
+			}
 		}else if(nEdge==1){
+			move(-600,-600);
+			UP_delay_ms(200);
 		  move(600,-600);
-			UP_delay_ms(600);
+			UP_delay_ms(300);
 			move(500,500);
 			UP_delay_ms(100);
 		}else if(nEdge==2){
+			move(-600,-600);
+			UP_delay_ms(200);
 		  move(-600,600);
-			UP_delay_ms(600);
+			UP_delay_ms(300);
 			move(500,500);
 			UP_delay_ms(200);
 		}else if(nEdge==3){
 		  move(-600,-600);
-			UP_delay_ms(600);
+			UP_delay_ms(400);
 			move(600,-600);
-			UP_delay_ms(600);
+			UP_delay_ms(200);
 		}else if(nEdge==7){
 		  move(-500,-500);
-		  UP_delay_ms(100);
+		  UP_delay_ms(300);
 		  move(-500,500);
 			UP_delay_ms(200);
 		}else if(nEdge==4){
 			move(600,600);
 			UP_delay_ms(600);
 		}else if(nEdge==5){
-		  move(700,-700);
-			UP_delay_ms(800);
+			move(-500,-500);
+			UP_delay_ms(200);
+		  move(600,-600);
+			UP_delay_ms(400);
 			move(500,500);
 			UP_delay_ms(200);
 		}else if(nEdge==6){
-		  move(-700,700);
-      UP_delay_ms(800);	
+			move(-500,-500);
+			UP_delay_ms(200);
+		  move(-600,600);
+      UP_delay_ms(400);	
       move(500,500);
 			UP_delay_ms(200);			
 		 }
