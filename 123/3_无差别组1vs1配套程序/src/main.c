@@ -449,14 +449,14 @@ int main()
 		else if(nFence==1)
 		{
 			move(500,500);
-			UP_delay_ms(1);
+			UP_delay_ms(500);
 			move(550,-550);                //500,-500
-			UP_delay_ms(1);              //320
+			UP_delay_ms(160);              //320
 		}
 		else if(nFence==2)
 		{
 			move(550,-550);               //500,-500
-			UP_delay_ms(1);             //320
+			UP_delay_us(1);             //320
 		}
     else if(nFence==3)
 		{
@@ -480,8 +480,8 @@ int main()
 		}
 		else if(nFence==7)
 		{
-			move(550,-550);                //500,-500
-			UP_delay_ms(1);              //150
+			move(550,-450);                //500,-500
+			UP_delay_us(1);              //150
 		}
 	}else if(nStage==1){
 	  if(nEdge==0){
