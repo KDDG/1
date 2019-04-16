@@ -415,6 +415,7 @@ void UP_ExtiHadler1(u32 extichannel)
 //主函数
 int main()
 {  
+	
 	//计时器初始设置
 	UP_Timer_EnableIT(TIMER_CHANNEL0, 20);       //使能计时器0，计时时间1s
   UP_Timer_SetHadler(TIMER_CHANNEL0, TimerHadler0);//传递计时器0的中断入口函数指针
