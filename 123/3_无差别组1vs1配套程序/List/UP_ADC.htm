@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\List\UP_ADC.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\List\UP_ADC.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Apr 14 21:07:16 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Apr 18 18:02:42 2019
 <BR><P>
 <H3>Maximum Stack Usage =        140 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -540,7 +540,7 @@ Global Symbols
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[56]"></a>Edge</STRONG> (Thumb, 232 bytes, Stack size 24 bytes, main.o(i.Edge))
+<P><STRONG><a name="[56]"></a>Edge</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, main.o(i.Edge))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Edge
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetValue
@@ -548,7 +548,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerHadler0
 </UL>
 
-<P><STRONG><a name="[58]"></a>Enemy</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(i.Enemy))
+<P><STRONG><a name="[58]"></a>Enemy</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, main.o(i.Enemy))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Enemy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetIO
@@ -1197,7 +1197,7 @@ Global Symbols
 
 <P><STRONG><a name="[bc]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 620 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 498 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = main &rArr; UP_System_Init &rArr; UP_UART_Init &rArr; UP_UART_DMAConfiguration &rArr; DMA_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_delay_us

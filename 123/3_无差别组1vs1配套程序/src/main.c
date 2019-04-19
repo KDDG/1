@@ -17,7 +17,8 @@ int AD9 = 0;		//左前防掉台红外光电
 int AD10 = 0;		//右前防掉台红外光电
 int AD11 = 0;		//右后防掉台红外光电
 int AD12 = 0;		//左后防掉台红外光电
-
+int AD13 = 0;
+int AD14 = 0;
 int AD15 = 0;		//倾角传感器
 
 int nStage = 0;	//检测在台上还是在台下
@@ -251,9 +252,9 @@ unsigned char Fence()//在台下检测朝向
 
 unsigned char Edge()  //检测边缘
 {
-	int g1=2610;          //2920
-	int g2=2900;          //3120
-	int g3=1200;          //1580
+	int g1=2920;          //2920
+	int g2=3120;          //3120
+	int g3=1500;          //1580
 	
 	
 	
@@ -261,37 +262,21 @@ unsigned char Edge()  //检测边缘
 	AD2=UP_ADC_GetValue(2);
 	AD3=UP_ADC_GetValue(3);
   //方案1
-	/*
-  if(AD1<3000)
-		f1=1;
-	if(AD2<2500)
-		f2=1;
-	if(AD3<1400)
-		f3=1;
-	if(f1+f2+f3==0)
-		return 0; //在边缘内
-	else if(f1+f2+f3==1){
-    if(f1==1)
-			return 1;  //左端出去
-		if(f2==1)
-			return 2;  //右端出去
-		if(f3==1)
-			return 3;  //前端出去
-	}
-	else if(f1+f2+f3==2){
-	  if(f1==1&&f2==1)
-			return 4;  //后方出去
-		if(f1==1&&f3==1)
-			return 5;  //左半部出去
-		if(f2==1&&f3==1)
-			return 6;  //右半部出去
-	}
-	else if(f1+f2+f3==3){
-	    return 7;  //全部出去
-	}*/
-  	
+	if(AD1>g1&&AD2>g2)
+		return 0;    //在里面
+	else if(AD1<g1&&AD2>g2)
+		return 1;    //1在外面
+	else if(AD1>g1&&AD2<g2)
+		return 2;    //2在外面
+	else if(AD1<g1&&AD2<g2){
+			if(AD3>g3)
+				return 4; //朝里面
+			if(AD3<g3)
+				return 3;  //朝外面
+	}else 
+	  return 5;
 	//方案2
-  
+  /*
 	if(AD1>g1&&AD2>g2&&AD3>g3)
 		return 0;  //在中间
 	else if(AD1<g1&&AD2>g2&&AD3>g3)
@@ -312,15 +297,22 @@ unsigned char Edge()  //检测边缘
 		return 9;  //角落负方向
 	else
 		return 7;  //其他
+	*/
 }
 //
 
 unsigned char Enemy()   //检测敌人
 {
 	AD7 = UP_ADC_GetIO(7); //前红外测距传感器
-	
+	AD8 = UP_ADC_GetIO(8);
+	AD14 = UP_ADC_GetIO(14);
+	AD15 = UP_ADC_GetIO(15);
 	if(AD7==0)
-		return 1;
+		return 1; //前方检测到
+	else if(AD8==0)
+		return 2; //右边检测到
+	else if(AD14==0)
+		return 3; //右前方检测到
 	else 
 		return 0;
 	
@@ -366,17 +358,14 @@ unsigned char Enemy()   //检测敌人
 
 unsigned char UStage()
 {
-	int a1,a2,a3,b1,b2,b3;
+	int b1,b2,b3;
 	AD1=UP_ADC_GetValue(1);
 	AD2=UP_ADC_GetValue(2);
 	AD3=UP_ADC_GetValue(3); 
-	a1=2200;
-	a2=2500;
-	a3=800;
-	b1=3300;
-	b2=3400;
-	b3=2200;
-	if(AD1>b1||AD2>b2||AD3>b3)
+	b1=2300;
+	b2=2550;
+	b3=830;
+	if(AD1<b1||AD2<b2||AD3<b3)
 	  return 0;
 	else 
 	  return 1;
@@ -438,8 +427,8 @@ int main()
 	UP_CDS_SetMode(3,CDS_SEVMODE);
 	UP_CDS_SetMode(6,CDS_SEVMODE);
  
-	UP_CDS_SetAngle(3,1008,800);
-	UP_CDS_SetAngle(6,0,800);
+	//UP_CDS_SetAngle(3,1008,800);
+	//UP_CDS_SetAngle(6,0,800);
 	while(1)
 	{
 		UP_LCD_ClearScreen();
@@ -451,6 +440,7 @@ int main()
 		UP_LCD_ShowInt(0,2,AD1);
 		UP_LCD_ShowInt(6,2,AD2);
 		UP_LCD_ShowInt(3,0,AD3);
+		
 	 if(nStage==0){
 		UP_CDS_SetAngle(3,1008,800);
 	  UP_CDS_SetAngle(6,0,800);
@@ -502,13 +492,8 @@ int main()
   	UP_CDS_SetAngle(3,496,800);
 	  UP_CDS_SetAngle(6,512,800);
 	  if(nEdge==0){
-			if(nEnemy==1){
-			  move(600,600);
-				UP_delay_us(15);
-			}else{
-		    move(400,400);
-			  UP_delay_ms(5);
-			}
+		  move(400,400);
+			UP_delay_us(20);
 		}else if(nEdge==1){
 			move(-600,-600);
 			UP_delay_ms(200);
@@ -522,574 +507,24 @@ int main()
 		  move(-600,600);
 			UP_delay_ms(300);
 			move(500,500);
-			UP_delay_ms(200);
+			UP_delay_ms(100);
 		}else if(nEdge==3){
 		  move(-600,-600);
 			UP_delay_ms(400);
 			move(600,-600);
-			UP_delay_ms(200);
-		}else if(nEdge==7){
-		  move(-500,-500);
-		  UP_delay_ms(300);
-		  move(-500,500);
-			UP_delay_ms(200);
+			UP_delay_ms(400);
 		}else if(nEdge==4){
-			move(600,600);
-			UP_delay_ms(600);
-		}else if(nEdge==5){
-			move(-500,-500);
+		  move(600,600);
 			UP_delay_ms(200);
+		}else if(nEdge==5){
+			move(-600,-600);
+			UP_delay_ms(300);
 		  move(600,-600);
 			UP_delay_ms(400);
-			move(500,500);
-			UP_delay_ms(200);
-		}else if(nEdge==6){
-			move(-500,-500);
-			UP_delay_ms(200);
-		  move(-600,600);
-      UP_delay_ms(400);	
-      move(500,500);
-			UP_delay_ms(200);			
-		 }
-	}
-	
-		/*
-		UP_delay_ms(1500);
-		move(600,-660);
-		*/
-	}
-	/*while(1){
-	 nFence=Fence();
-	 UP_LCD_ShowInt(0,1,AD4);
-	 UP_LCD_ShowInt(0,2,nFence);
-	 if(nFence==0){
-		 move(-400,-400);
-		 UP_delay_ms(200);
-	   qianshangtai();
-	 }else if(nFence==1){
-	   houshangtai();
-	 }else if(nFence==2){
-	   move(-500,500);
-	 }else if(nFence==3){
-		 move(-400,-400);
-		 UP_delay_ms(200);
-		 move(1000,1000);
-		 UP_delay_ms(1500);
-	 }else if(nFence==4){
-	   move(-800,800);
-		 UP_delay_ms(800);
-		 move(1000,1000);
-		 UP_delay_ms(1500);
-	 }
-
-	}
-	*/
-
-	
-	/*
-	while(1){
-		nEdge=Edge();
-	  UP_LCD_ShowInt(0,1,nEdge);
-		
-		if(nEdge==0){
-		  move(400,400);
-      UP_delay_ms(200);
-			//move(0,0);
-			//UP_delay_ms(100);
-		}else if(nEdge==1){
-		  move(-500,-500);
-			UP_delay_ms(700);
-			move(200,-500);
-			UP_delay_ms(400);
-		}else if(nEdge==2){
-		  move(500,500);
-			UP_delay_ms(400);
-		}else if(nEdge==3){
-		  move(-500,200);
-			UP_delay_ms(400);
-		}else if(nEdge==4){
-		  move(200,-500);
-			UP_delay_ms(400);
-		}else if(nEdge==5){
-		  move(200,-500);
-			UP_delay_ms(400);
-		}else if(nEdge==6){
-		  move(-500,200);
-			UP_delay_ms(400);
-		}else if(nEdge==7){
-		  move(200,-500);
-			UP_delay_ms(500);
 		}
 	}
-	*/
-	//启动电机和舵机
-	//UP_CDS_SetMode(1, CDS_MOTOMODE);
-	//UP_CDS_SetMode(2, CDS_MOTOMODE);
-	/*
-	while(1){
-		nEdge=Edge();
-		UP_LCD_ShowInt(0,2,nEdge*1000);
-		if(nEdge==0){
-			move(400,400);
-      UP_delay_ms(500);
-			move(0,0);
-			UP_delay_ms(200);
-		}else if(nEdge==2){
-			move(-500,-500);
-		  UP_delay_ms(600);
-		  move(300,-500);
-      UP_delay_ms(400);
-		}else if(nEdge==1){
-			move(500,500);
-		  UP_delay_ms(400);
-		}else if(nEdge==4){
-			move(-500,-500);
-		  UP_delay_ms(600);
-		  move(300,-500);
-      UP_delay_ms(400);
-		}else if(nEdge==3){
-			move(500,500);
-		  UP_delay_ms(400);
-		}else{
-		  move(0,0);
-		}
-	}*/
-	/*
 	
-	UP_CDS_SetMode(5, CDS_SEVMODE);
-	UP_CDS_SetMode(6, CDS_SEVMODE);
-	UP_CDS_SetMode(7, CDS_SEVMODE);
-	UP_CDS_SetMode(8, CDS_SEVMODE);
 
-	zhong();
-	UP_delay_ms(1000);
-	
-  while(1)
-	{
-		if((UP_ADC_GetValue(2) < 1000)||(UP_ADC_GetValue(4) < 1000))
-		{
-			break;
-		}
-		UP_delay_ms(10);
-	}
-	
-	qianshangtai();
-	
-while(1)
-{	
-	nStage = Stage();	//检测擂台
-	
- 	
- 	UP_LCD_ShowInt(0, 0, nStage);
-		switch(nStage)
-		{
-		  case 0:	//在台下
-// 				move(500,500);	
-// 				UP_delay_ms(200);
-				nFence = Fence();	//检测边沿
-			 	UP_LCD_ClearScreen();
-				switch(nFence)
-				{
-					case 1:	//在台下后方对擂台
-						houshangtai();
-						break;
-					case 2:	//左侧对擂台
-						move(0,0);	
-						UP_delay_ms(200);
-						while(1)
-						{	
-							AD1 = UP_ADC_GetValue(1); 
-							AD6 = UP_ADC_GetValue(6);
-							AD4 = UP_ADC_GetValue(4);
-							if((AD1<1000)&&(AD6<160)&&(AD4>1000))
-								{
-									UP_delay_ms(200);
-									move(400,400);	
-									UP_delay_ms(300);
-									break;
-								}
-								else
-								{
-									move(-400,400);	
-									UP_delay_ms(2);
-								}
-						}
-						break;
-					case 3:	//前方对擂台
-						qianshangtai();
-						break;
-					case 4:	//右侧对擂台
-						move(0,0);	
-						UP_delay_ms(200);
-						while(1)
-						{	
-							AD1 = UP_ADC_GetValue(1); 
-							AD6 = UP_ADC_GetValue(6);
-							AD4 = UP_ADC_GetValue(4);
-							if((AD1<1000)&&(AD6<160)&&(AD4>1000))
-								{
-									UP_delay_ms(200);
-									move(400,400);	
-									UP_delay_ms(300);
-									break;
-								}
-								else
-								{
-									move(400,-400);	
-									UP_delay_ms(2);
-								}
-						}
-						break;
-					case 5:	//前左检测到围栏
-						move(-400,-400);	
-				  	UP_delay_ms(400);
-						break;
-					case 6:	//前右检测到围栏
-						move(-400,-400);	
- 						UP_delay_ms(400);
- 						break;
-					case 7:	//后有检测到围栏
-						move(400,400);	
- 						UP_delay_ms(400);
-						break;
-					case 8:	//后左检测到围栏
-						move(400,400);	
- 						UP_delay_ms(400);
-						break;
-					case 9:	//前方或后方有台上敌人
-						move(500,-500);	
-						UP_delay_ms(300);
-						move(400,400);	
-						UP_delay_ms(400);
-						break;
-					case 10:	//左侧或右侧有台上敌人
-						move(400,400);	
-						UP_delay_ms(400);
-						break;
-					case 11:	//前方、左侧和右侧检测到围栏
-						move(-400,-300);	
-						UP_delay_ms(500);
-						move(-400,400);	
-						UP_delay_ms(300);
-						break;
-					case 12:	//前右后检测到围栏
-						move(300,600);	
-						UP_delay_ms(400);
-						break;
-					case 13:	//前左后检测到围栏
-						move(600,300);	
-						UP_delay_ms(400);
-						break;
-					case 14:	//右左后检测到围栏
-						move(-400,400);	
-						UP_delay_ms(200);
-						move(400,400);	
-						UP_delay_ms(300);
-						break;
-					case 15:	//前右检测到擂台
-						move(0,0);	
-						UP_delay_ms(200);
-						while(1)
-						{	
-							AD1 = UP_ADC_GetValue(1); 
-							AD6 = UP_ADC_GetValue(6);
-							AD4 = UP_ADC_GetValue(4);
-							if((AD1<1000)&&(AD6<160)&&(AD4>1000))
-								{
-									UP_delay_ms(200);
-									move(400,400);	
-									UP_delay_ms(300);
-									break;
-								}
-								else
-								{
-									move(360,-400);	
-									UP_delay_ms(2);
-								}
-						}
-						break;
-					case 16:	//前左检测到擂台
-						move(0,0);	
-						UP_delay_ms(200);
-						while(1)
-						{	
-							AD1 = UP_ADC_GetValue(1); 
-							AD6 = UP_ADC_GetValue(6);
-							AD4 = UP_ADC_GetValue(4);
-							if((AD1<1000)&&(AD6<160)&&(AD4>1000))
-								{
-									UP_delay_ms(200);
-									move(400,400);	
-									UP_delay_ms(300);
-									break;
-								}
-								else
-								{
-									move(-400,400);	
-									UP_delay_ms(2);
-								}
-						}
-						break;
-						case 17:	//在台下，后方和右侧对擂台其他传感器没检测到
-						move(0,0);	
-						UP_delay_ms(200);
-						while(1)
-						{	
-							AD1 = UP_ADC_GetValue(1); 
-							AD6 = UP_ADC_GetValue(6);
-							AD4 = UP_ADC_GetValue(4);
-							if((AD1<1000)&&(AD6<160)&&(AD4>1000))
-								{
-									UP_delay_ms(200);
-									move(400,400);	
-									UP_delay_ms(300);
-									break;
-								}
-								else
-								{
-									move(400,-500);	
-									UP_delay_ms(2);
-								}
-						}
-						break;
-					case 18:	//在台下，后方和左侧对擂台其他传感器没检测到
-						move(0,0);	
-						UP_delay_ms(200);
-						while(1)
-						{	
-							AD1 = UP_ADC_GetValue(1); 
-							AD6 = UP_ADC_GetValue(6);
-							AD4 = UP_ADC_GetValue(4);
-							if((AD1<1000)&&(AD6<160)&&(AD4>1000))
-								{
-									UP_delay_ms(200);
-									move(400,400);	
-									UP_delay_ms(300);
-									break;
-								}
-								else
-								{
-									move(-420,350);	
-									UP_delay_ms(2);
-								}
-						}
-						break;
-					case 101:	//错误
-						UP_delay_ms(10);
-						break;
+  }
 
-				}
-				break;
-				
-			case 1:	//在台上
-				na=0;
-				nb=0;
-				nEdge = Edge();	//检测边缘
-
-				//UP_LCD_ClearScreen();
-			
-			
-			
-				UP_LCD_ShowInt(2, 2, nEdge);
-				switch(nEdge)
-				{
-					case 0:	//没有检测到边缘
-					nEnemy = Enemy();	//检测敌人
-					//UP_LCD_ClearScreen();
-				
-					UP_LCD_ShowInt(3, 3, nEnemy);
-					switch(nEnemy)
-						{
-							case 0:	//无敌人
-								move(400,400);	
-								UP_delay_ms(10);
-								break;
-							case 1:	//前有qizi
-								move(800,800);	
-								UP_delay_ms(20);
-								break;
-							case 2:	//右侧有敌人
-								move(-400,-400);	
-								UP_delay_ms(200);
-								move(400,-400);	
-								UP_delay_ms(300);
-								break;
-							case 3:	//后方有敌人
-								move(-400,400);	
-								UP_delay_ms(800);
-								break;
-							case 4:	//左侧有敌人
-								move(-400,-400);	
-								UP_delay_ms(200);
-								move(-400,400);	
-								UP_delay_ms(300);
-								break;
-							case 11:	//前方检测到箱子
-								move(800,800);	
-								UP_delay_ms(20);
-								break;
-							case 103:	//错误
-								move(400,400);	
-								UP_delay_ms(10);
-								break;
-						}
-
-						break;
-					case 1:	//左前检测到边缘
-						move(-400,-400);	
-						UP_delay_ms(400);
-						move(400,-400);	
-						UP_delay_ms(300);
-						break;
-					case 2:	//右前检测到边缘
-						move(-400,-400);	
-						UP_delay_ms(400);
-						move(400,-400);	
-						UP_delay_ms(400);
-						break;
-					case 3:	//右后检测到边缘
-						move(400,400);	
-						UP_delay_ms(500);
-						move(400,-400);	
-						UP_delay_ms(500);
-						break;
-					case 4:	//左后检测到边缘
-						move(400,400);	
-						UP_delay_ms(500);
-						move(400,-400);	
-						UP_delay_ms(500);
-						break;
-					case 5:	//前方两个检测到边缘
-
-						move(-500,-500);	
-						UP_delay_ms(700);
-						move(500,-500);	
-						UP_delay_ms(300);
-					
-						break;
-// 					case 5:	//前方两个检测到边缘
-// 						nc++;
-// 						move(-500,-500);	
-// 						UP_delay_ms(700);
-// 						move((40*nc),-(40*nc));	
-// 						UP_delay_ms(500);
-// 						if (nc==15)
-// 						{
-// 							nc=8;
-// 						}
-// 						break;
-					case 6:	//后方两个检测到边缘
-						move(500,500);	
-						UP_delay_ms(500);
-						break;
-					case 7:	//左侧两个检测到边缘
-						move(500,-400);	
-						UP_delay_ms(500);
-						move(400,400);	
-						UP_delay_ms(300);
-						break;
-					case 8:	//右侧两个检测到边缘
-						move(-400,500);	
-						UP_delay_ms(500);
-						move(400,400);	
-						UP_delay_ms(300);
-						break;
-					case 9:	//搁浅前在底下
-						nd++;
-						if (nd>20)
-						{
-							nd=0;
-							move(0,0);	
-							UP_delay_ms(10);
-							move(-500,-500);	
-							UP_delay_ms(200);
-							qding();
-							move(-500,-500);	
-							UP_delay_ms(800);
-							zhong();
-							move(-500,-500);	
-							UP_delay_ms(500);
-							move(500,-500);	
-							UP_delay_ms(300);
-							move(0,0);	
-							UP_delay_ms(100);
-						}
-						else
-						{
-							UP_delay_ms(20);
-						}
-						
-						
-						break;
-					case 10:	//搁浅前在上面
-						ne++;
-						if (ne>20)
-						{
-							ne=0;
-							move(0,0);	
-							UP_delay_ms(10);
-							move(500,500);	
-							UP_delay_ms(200);
-							hding();
-							move(500,500);	
-							UP_delay_ms(800);
-							zhong();
-							move(500,500);	
-							UP_delay_ms(400);
-							move(0,0);	
-							UP_delay_ms(100);
-						}
-						else
-						{
-							UP_delay_ms(20);
-						}
-						break;
-					case 102:	//错误
-						move(500,500);
-						UP_delay_ms(10);
-						break;
-
-				}
-						break;
-				case 3://搁浅左侧在擂台右侧在地面
-					na++;
-					if (na==350)
-					{
-						move(-500,500);	
-						UP_CDS_SetAngle(5, 1000, 800);//左侧支地
-						UP_CDS_SetAngle(7, 24, 800);
-						//UP_CDS_SetAngle(6, 24, 800);//右侧支地
-						//UP_CDS_SetAngle(8, 1000, 800);
-						UP_delay_ms(800);
-						zhong();
-						UP_delay_ms(600);
-						na=0;
-					}
-					else 
-					{
-						UP_delay_ms(1);
-					}
-					break;
-				case 4://搁浅右侧在擂台左侧在地面
-					na++;
-					if(na==350)
-					{	
-						move(500,-500);	
-						//UP_CDS_SetAngle(5, 1000, 800);//左侧支地
-						//UP_CDS_SetAngle(7, 24, 800);
-						UP_CDS_SetAngle(6, 24, 800);//右侧支地
-						UP_CDS_SetAngle(8, 1000, 800);
-						UP_delay_ms(800);
-						zhong();
-						UP_delay_ms(600);
-						na=0;
-					}
-					else 
-					{
-						UP_delay_ms(1);
-					}
-					break;
-		}
-}*/
 }
-
