@@ -160,27 +160,34 @@ unsigned char Fence()//在台下检测朝向
 //
 unsigned char Edge()  //检测边缘
 {
-	int g1=2940;          //2920
-	int g2=3090;          //3120
+	int g1=2940;          //2880
+	int g2=3100;          //3072
 	int g3=1500;          //1580
 	
 	AD1=UP_ADC_GetValue(1);
 	AD2=UP_ADC_GetValue(2);
 	AD3=UP_ADC_GetValue(3);
   //方案1
-	if(AD1>g1&&AD2>g2)
+	if(AD1>g1&&AD2>g2){
 		return 0;    //在里面
-	else if(AD1<g1&&AD2>g2)
+	}else if(AD1<g1&&AD2>g2){
 		return 1;    //1在外面
-	else if(AD1>g1&&AD2<g2)
+	}else if(AD1>g1&&AD2<g2){
 		return 2;    //2在外面
-	else if(AD1<g1&&AD2<g2){
-			if(AD3>1600)
+	}else if(AD1<g1&&AD2<g2){
+			if(AD3>=1520){
 				return 4; //朝里面
-			if(AD3<1400)
-				return 3;  //朝外面
+			}else if(AD3<1520){
+				if(AD1>2860&&AD2>3040){
+		   		return 3;  //朝外面
+				}else if(AD1<2860||AD2<3040){
+					return 5;  //朝里面
+				}else{
+				  return 5;
+				}
+			}
 	}else 
-	  return 5;
+	  return 6;
 	//方案2
   /*
 	if(AD1>g1&&AD2>g2&&AD3>g3)
@@ -208,7 +215,7 @@ unsigned char Edge()  //检测边缘
 //
 unsigned char Enemy()   //检测敌人
 {
-	AD5 = UP_ADC_GetIO(5); //后
+	AD4 = UP_ADC_GetIO(4); //后
 	AD7 = UP_ADC_GetIO(7); //前红外测距传感器
 	AD8 = UP_ADC_GetIO(8); //右
 	AD9 = UP_ADC_GetIO(9); //左
@@ -216,17 +223,17 @@ unsigned char Enemy()   //检测敌人
 	AD11= UP_ADC_GetIO(11); //前右
 	AD12= UP_ADC_GetIO(12); //后右
 	AD13= UP_ADC_GetIO(13); //后左
-	if(AD7==0&&AD8==1&&AD5==1&&AD9==1&&AD10==1&&AD11==1&&AD12==1&&AD13==1)
+	if(AD7==0&&AD8==1&&AD4==1&&AD9==1&&AD12==1&&AD13==1)
 		return 1; //前方检测到
-	else if(AD5==0)
+	else if(AD4==0)
 		return 2; //后边检测到
 	else if(AD9==0)
 		return 3;  //左
 	else if(AD8==0)
 		return 4;  //右
-	else if(AD10==0)
+	else if(AD10==0&&AD7==1)
 		return 5;  //前左
-	else if(AD11==0)
+	else if(AD11==0&&AD7==1)
 		return 6;  //前右
 	else if(AD12==0)
 		return 7;  //后右
@@ -311,7 +318,7 @@ void TimerHadler0(u32 timerchannel) //定义Timer中断入口函数
 int main()  //主函数
 {  
 	//计时器初始设置
-	UP_Timer_EnableIT(TIMER_CHANNEL0, 20);       //使能计时器0，计时时间20us
+	UP_Timer_EnableIT(TIMER_CHANNEL0, 2);       //使能计时器0，计时时间20us
   UP_Timer_SetHadler(TIMER_CHANNEL0, TimerHadler0);//传递计时器0的中断入口函数指针
 
 	/*外部中断检测上台	
@@ -328,7 +335,7 @@ int main()  //主函数
 	//UP_CDS_SetAngle(6,0,800);
 	while(1)
 	{
-		UP_LCD_ClearScreen();
+		//UP_LCD_ClearScreen();
 		
 		UP_LCD_ShowInt(0,2,AD1);
 		UP_LCD_ShowInt(6,2,AD2);
@@ -339,7 +346,7 @@ int main()  //主函数
 		  UP_LCD_ShowInt(3,3,nFence);
 		}else if(nStage==1){
 		  UP_LCD_ShowInt(5,3,nEdge);
-      UP_LCD_ShowInt(7,3,nEnemy);
+      UP_LCD_ShowInt(8,3,nEnemy);
 		}		
 		
 	 if(nStage==0){
@@ -350,7 +357,7 @@ int main()  //主函数
 			move(-speedR,-speedR);
 			UP_delay_ms(400);
 			move(speedM,speedM);
-			UP_delay_ms(650);
+			UP_delay_ms(950);
 		}
 		else if(nFence==1)
 		{
@@ -394,54 +401,66 @@ int main()  //主函数
 	  UP_CDS_SetAngle(6,djDown6,800);
 	  if(nEdge==0){
 			if(nEnemy==1){
-			  move(speedR,speedR);
-				UP_delay_us(5);
+				if(AD1<3000||AD2<3160){
+					move(-speedM,-speedM);
+					UP_delay_ms(200);
+				}else{
+			    move(speedR,speedR);
+				  UP_delay_us(1);
+				}
 			}else if(nEnemy==2){
 				move(speedN,-speedN);
+				UP_delay_ms(300);
 			}else if(nEnemy==3){
 				move(-speedN,speedN);
-				UP_delay_ms(200);
+				UP_delay_ms(150);
 			}else if(nEnemy==4){
 				move(speedN,-speedN);
-				UP_delay_ms(200);
+				UP_delay_ms(150);
 			}else if(nEnemy==5){
-				move(-speedN,speedN);
+				move(-speedm,speedm);
+				UP_delay_us(1);
 			}else if(nEnemy==6){
-				move(speedN,-speedN);
+				move(speedm,-speedm);
+				UP_delay_us(1);
 			}else if(nEnemy==7){
-				move(speedN,-speedN);
+				move(speedm,-speedm);
+				UP_delay_us(1);
 			}else if(nEnemy==8){
-				move(-speedN,speedN);
+				move(-speedm,speedm);
+				UP_delay_us(1);
+		  }else{
+			  move(400,400);
+			  UP_delay_us(1);
 			}
-			move(speedN,speedN);
-			UP_delay_us(5);
 		}else if(nEdge==1){
 			move(-speedN,-speedN);
-			UP_delay_ms(200);
+      UP_delay_ms(400);
 		  move(speedN,-speedN);
-			UP_delay_ms(300);
+		  UP_delay_ms(200);
 			move(speedm,speedm);
-			UP_delay_ms(100);
+			UP_delay_ms(200);
 		}else if(nEdge==2){
 			move(-speedN,-speedN);
-			UP_delay_ms(200);
+		  UP_delay_ms(400);
 		  move(-speedN,speedN);
-			UP_delay_ms(300);
+			UP_delay_ms(200);
 			move(speedm,speedm);
-			UP_delay_ms(100);
+			UP_delay_ms(200);
 		}else if(nEdge==3){
 		  move(-speedN,-speedN);
 			UP_delay_ms(400);
 			move(speedN,-speedN);
-			UP_delay_ms(400);
-		}else if(nEdge==4){
+		  UP_delay_ms(200);
+		}else if(nEdge==4){ 
 		  move(speedN,speedN);
-			UP_delay_ms(200);
-		}else if(nEdge==5){
-			move(-speedN,-speedN);
-			UP_delay_ms(300);
-		  move(speedN,-speedN);
 			UP_delay_ms(400);
+		}else if(nEdge==5){
+			move(speedN,speedN);
+		  UP_delay_ms(400);
+		}else if(nEdge==6){
+		  //move(-speedN,-speedN);
+      //UP_delay_ms(100);			
 		}
 	 }
 	

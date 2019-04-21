@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\List\UP_ADC.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\List\UP_ADC.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Apr 19 22:51:26 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Apr 21 17:34:18 2019
 <BR><P>
 <H3>Maximum Stack Usage =        140 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -540,7 +540,7 @@ Global Symbols
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[56]"></a>Edge</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, main.o(i.Edge))
+<P><STRONG><a name="[56]"></a>Edge</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, main.o(i.Edge))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Edge
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetValue
@@ -548,7 +548,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerHadler0
 </UL>
 
-<P><STRONG><a name="[58]"></a>Enemy</STRONG> (Thumb, 180 bytes, Stack size 8 bytes, main.o(i.Enemy))
+<P><STRONG><a name="[58]"></a>Enemy</STRONG> (Thumb, 174 bytes, Stack size 8 bytes, main.o(i.Enemy))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Enemy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_ADC_GetIO
@@ -925,8 +925,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Fill
 </UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Init
 </UL>
 
 <P><STRONG><a name="[8b]"></a>UP_LCD_Fill</STRONG> (Thumb, 66 bytes, Stack size 20 bytes, up_lcd.o(i.UP_LCD_Fill))
@@ -942,8 +941,8 @@ Global Symbols
 <P><STRONG><a name="[8d]"></a>UP_LCD_Init</STRONG> (Thumb, 250 bytes, Stack size 8 bytes, up_lcd.o(i.UP_LCD_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = UP_LCD_Init &rArr; UP_LCD_ClearScreen &rArr; UP_LCD_Fill &rArr; LCD_WriteCmd &rArr; SPIByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ClearScreen
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Turn
+<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_Turn
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ClearScreen
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcds_Config
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteCmd
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
@@ -1197,7 +1196,7 @@ Global Symbols
 
 <P><STRONG><a name="[bc]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 588 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 586 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = main &rArr; UP_System_Init &rArr; UP_UART_Init &rArr; UP_UART_DMAConfiguration &rArr; DMA_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_delay_us
@@ -1206,7 +1205,6 @@ Global Symbols
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_Timer_EnableIT
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_System_Init
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ShowInt
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_LCD_ClearScreen
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_CDS_SetMode
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_CDS_SetAngle
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move
