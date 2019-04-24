@@ -7,10 +7,10 @@
 #define hdDown3          //灰度传感器3台下检测数值
 #define rightDJ  3       //左舵机号
 #define leftDJ   6       //右舵机号
-#define djUP3    1008    //舵机3抬起
-#define djUP6    0       //舵机6抬起
-#define djDown3  496     //舵机3下降
-#define djDown6  512     //舵机6下降
+#define djUP3    690    //舵机3抬起
+#define djUP6    220       //舵机6抬起
+#define djDown3  89     //舵机3下降
+#define djDown6  830     //舵机6下降
 #define speedM   1000    //最大冲刺速度    
 #define speedN   600     //行驶速度
 #define speedR   900     //冲撞
@@ -171,9 +171,9 @@ unsigned char Edge()  //检测边缘
 	if(AD1>g1&&AD2>g2){
 		return 0;    //在里面
 	}else if(AD1<g1&&AD2>g2){
-		return 1;    //1在外面
+		  return 1;    //1在外面
 	}else if(AD1>g1&&AD2<g2){
-		return 2;    //2在外面
+		  return 2;    //2在外面
 	}else if(AD1<g1&&AD2<g2){
 			if(AD3>=1520){
 				return 4; //朝里面
@@ -331,8 +331,8 @@ int main()  //主函数
 	UP_CDS_SetMode(3,CDS_SEVMODE);
 	UP_CDS_SetMode(6,CDS_SEVMODE);
  
-	//UP_CDS_SetAngle(3,1008,800);
-	//UP_CDS_SetAngle(6,0,800);
+	UP_CDS_SetAngle(3,690,800);
+	UP_CDS_SetAngle(6,220,800);
 	while(1)
 	{
 		//UP_LCD_ClearScreen();
