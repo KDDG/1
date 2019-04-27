@@ -7,10 +7,10 @@
 #define hdDown3          //灰度传感器3台下检测数值
 #define rightDJ  3       //左舵机号
 #define leftDJ   6       //右舵机号
-#define djUP3    690    //舵机3抬起
-#define djUP6    220       //舵机6抬起
-#define djDown3  89     //舵机3下降
-#define djDown6  830     //舵机6下降
+#define djUP4    265    //舵机3抬起
+#define djUP5    870       //舵机6抬起
+#define djDown4  879     //舵机3下降
+#define djDown5  258     //舵机6下降
 #define speedM   1000    //最大冲刺速度    
 #define speedN   600     //行驶速度
 #define speedR   900     //冲撞
@@ -20,16 +20,16 @@ int AD1 = 0;		//灰度1
 int AD2 = 0;		//灰度2
 int AD3 = 0;		//灰度3
 
-int AD4 = 1;		//
-int AD5 = 1;		//前红外测距传感器
-int AD6 = 1;		//右红外测距传感器
-int AD7 = 1;		//后红外测距传感器
-int AD8 = 1;		//左红外测距传感器
-int AD9 = 1;		//
-int AD10 = 1;		//
-int AD11 = 1;		//
-int AD12 = 1;		//
-int AD13 = 1;   //
+int AD4 = 2000;		//
+int AD5 = 2001;		//前红外测距传感器
+int AD6 = 2001;		//右红外测距传感器
+int AD7 = 2001;		//后红外测距传感器
+int AD8 = 2001;		//左红外测距传感器
+int AD9 = 2001;		//
+int AD10 = 2001;		//
+int AD11 = 2001;		//
+int AD12 = 2001;		//
+int AD13 = 2001;   //
 
 int nStage = 0;	//检测在台上还是在台下
 int nEdge = 0;	//边缘
@@ -101,51 +101,51 @@ void move(int leftforward,int rightforward) //移动函数
 //
 unsigned char Fence()//在台下检测朝向
 {
-	 AD4=UP_ADC_GetIO(4); //下 后
-	 AD5=UP_ADC_GetIO(5); //上 后
-	 AD6=UP_ADC_GetIO(6); //下 前
-	 AD7=UP_ADC_GetIO(7); //上 前
-	 AD8=UP_ADC_GetIO(8); //下 右
-	 AD9=UP_ADC_GetIO(9); //下 左
+	 AD4=UP_ADC_GetValue(4); //下 后
+	 AD5=UP_ADC_GetValue(5); //上 后
+	 AD6=UP_ADC_GetValue(6); //下 前
+	 AD7=UP_ADC_GetValue(7); //上 前
+	 AD8=UP_ADC_GetValue(8); //下 右
+	 AD9=UP_ADC_GetValue(9); //下 左
 	 
 	  /*正对着台*/
-	  if(AD4==0&&AD5==0&&AD6==0&&AD7==1&&AD8==1&&AD9==1)
+	  if(AD4<1000&&AD5<1000&&AD6<1000&&AD7>1000&&AD8>1000&&AD9>1000)
 		{
 			 return 0;
     }
 		
 	  /*背对着台*/
-		else if(AD4==0&&AD6==0&&AD7==0&&AD5==1&&AD8==1&&AD9==1)
+		else if(AD4<1000&&AD6<1000&&AD7<1000&&AD5>1000&&AD8>1000&&AD9>1000)
 		{
 			 return 1;	
 		}
 		
 		/*侧对着台*/
-		else if(AD8==0&&AD9==0)
+		else if(AD8<1000&&AD9<1000)
 		{
 			return 2;			
 		}
 		
 		/*左后角*/
-	  else if(AD9==0&&AD4==0&&AD5==0)
+	  else if(AD9<1000&&AD4<1000&&AD5<1000)
 		{
 			return 3;
 		}
 		
 		/*右后角*/
-		else if(AD8==0&&AD4==0&&AD5==0)
+		else if(AD8<1000&&AD4<1000&&AD5<1000)
 		{
 			return 4;
 		}
 		
 		/*左前角*/
-		else if(AD9==0&&AD6==0&&AD7==0)
+		else if(AD9<1000&&AD6<1000&&AD7<1000)
 		{
 			return 5;
 		}
 		
 		/*右前角*/
-		else if(AD8==0&&AD6==0&&AD7==0)
+		else if(AD8<1000&&AD6<1000&&AD7<1000)
 		{
 			return 6;
 		}
@@ -160,8 +160,8 @@ unsigned char Fence()//在台下检测朝向
 //
 unsigned char Edge()  //检测边缘
 {
-	int g1=2940;          //2880
-	int g2=3100;          //3072
+	int g1=2865;          //2880
+	int g2=3080;          //3072
 	int g3=1500;          //1580
 	
 	AD1=UP_ADC_GetValue(1);
@@ -171,16 +171,22 @@ unsigned char Edge()  //检测边缘
 	if(AD1>g1&&AD2>g2){
 		return 0;    //在里面
 	}else if(AD1<g1&&AD2>g2){
-		  return 1;    //1在外面
+		  if(AD3<1520)
+		      return 1;    //1在外面
+			else if(AD3>=1520)
+				  return 4;
 	}else if(AD1>g1&&AD2<g2){
-		  return 2;    //2在外面
+		  if(AD3<1520)
+		     return 2;    //2在外面
+			else if(AD3>=1520)
+				 return 4;
 	}else if(AD1<g1&&AD2<g2){
 			if(AD3>=1520){
 				return 4; //朝里面
 			}else if(AD3<1520){
-				if(AD1>2860&&AD2>3040){
+				if(AD1>2820&&AD2>3040){
 		   		return 3;  //朝外面
-				}else if(AD1<2860||AD2<3040){
+				}else if(AD1<2820||AD2<3040){
 					return 5;  //朝里面
 				}else{
 				  return 5;
@@ -214,70 +220,35 @@ unsigned char Edge()  //检测边缘
 }
 //
 unsigned char Enemy()   //检测敌人
-{
-	AD4 = UP_ADC_GetIO(4); //后
-	AD7 = UP_ADC_GetIO(7); //前红外测距传感器
-	AD8 = UP_ADC_GetIO(8); //右
-	AD9 = UP_ADC_GetIO(9); //左
-	AD10= UP_ADC_GetIO(10); //前左
-	AD11= UP_ADC_GetIO(11); //前右
-	AD12= UP_ADC_GetIO(12); //后右
-	AD13= UP_ADC_GetIO(13); //后左
-	if(AD7==0&&AD8==1&&AD4==1&&AD9==1&&AD12==1&&AD13==1)
+ {
+	AD4 = UP_ADC_GetValue(4); //后
+	AD7 = UP_ADC_GetValue(7); //前红外测距传感器
+	AD8 = UP_ADC_GetValue(8); //右
+	AD9 = UP_ADC_GetValue(9); //左
+	AD10= UP_ADC_GetValue(10); //前左
+	AD11= UP_ADC_GetValue(11); //前右
+	AD12= UP_ADC_GetValue(12); //后右
+	AD13= UP_ADC_GetValue(13); //后左
+	if(AD7<1000)
 		return 1; //前方检测到
-	else if(AD4==0)
+	else if(AD4<1000)
 		return 2; //后边检测到
-	else if(AD9==0)
+	else if(AD9<1000)
 		return 3;  //左
-	else if(AD8==0)
+	else if(AD8<1000)
 		return 4;  //右
-	else if(AD10==0&&AD7==1)
+	else if(AD10<1000&&AD7>1000)
 		return 5;  //前左
-	else if(AD11==0&&AD7==1)
+	else if(AD11<1000&&AD7>1000)
 		return 6;  //前右
-	else if(AD12==0)
+	else if(AD12<1000)
 		return 7;  //后右
-	else if(AD13==0)
+	else if(AD13<1000)
 		return 8; //后左前方检测到
   else 
 		return 9; //unknow
 	
 	/*
-	if ((AD1 > 100)&&(AD2 > 100)&&(AD3 > 100)&&(AD4 > 100))
-	{
-		return 0;  //无敌人
-	}
-	if ((AD1 < 100)&&(AD2 > 100)&&(AD3 > 100)&&(AD4 > 100))
-	{
-		if (AD5>1000)
-		{
-			return 11;  //前方是箱子
-		}
-		else
-			{
-				return 1;   //前方有棋子
-			}
-	}
-	if ((AD1 > 100)&&(AD2 < 100)&&(AD3 > 100)&&(AD4 > 100))
-	{
-		return 2;   //右侧有敌人或棋子
-	}
-	if ((AD1 > 100)&&(AD2 > 100)&&(AD3 < 100)&&(AD4 > 100))
-	{
-		return 3;   //后方有敌人或棋子
-	}
-	if ((AD1 > 100)&&(AD2 > 100)&&(AD3 > 100)&&(AD4 < 100))
-	{
-		return 4;   //左侧有敌人或棋子
-	}
-	else
-	{
-		
-		
-		
-		
-		return 103;//错误
-	}
 	*/
 }
 
@@ -290,9 +261,9 @@ unsigned char Stage()//是否在台上
 	AD1=UP_ADC_GetValue(1);
 	AD2=UP_ADC_GetValue(2);
 	AD3=UP_ADC_GetValue(3); 
-	b1=2300;
-	b2=2550;
-	b3=830;
+	b1=2360;
+	b2=2530;
+	b3=930;
 	if(AD1<b1||AD2<b2||AD3<b3)
 	  return 0;
 	else 
@@ -331,11 +302,26 @@ int main()  //主函数
 	UP_CDS_SetMode(3,CDS_SEVMODE);
 	UP_CDS_SetMode(6,CDS_SEVMODE);
  
-	UP_CDS_SetAngle(3,690,800);
-	UP_CDS_SetAngle(6,220,800);
+	UP_CDS_SetAngle(4,265,800);
+	UP_CDS_SetAngle(5,870,800);
+	
+	while(1){
+		
+		AD7=UP_ADC_GetIO(7);
+		AD5=UP_ADC_GetIO(5);
+		UP_LCD_ShowInt(0,2,AD7);
+		UP_LCD_ShowInt(0,3,AD5);
+	  if(AD7==0&&AD5==0){
+			move(speedM,speedM);
+			UP_delay_ms(850);
+			break;
+		}
+	}
+	
 	while(1)
-	{
+	{ 
 		//UP_LCD_ClearScreen();
+		
 		
 		UP_LCD_ShowInt(0,2,AD1);
 		UP_LCD_ShowInt(6,2,AD2);
@@ -350,8 +336,9 @@ int main()  //主函数
 		}		
 		
 	 if(nStage==0){
-		UP_CDS_SetAngle(3,djUP3,800);
-	  UP_CDS_SetAngle(6,djUP6,800);
+		UP_CDS_SetAngle(4,265,900);
+	  UP_CDS_SetAngle(5,870,900);
+		 
 		if(nFence==0)
 		{
 			move(-speedR,-speedR);
@@ -361,14 +348,14 @@ int main()  //主函数
 		}
 		else if(nFence==1)
 		{
-			move(speedN,speedN);
-			UP_delay_ms(500);
-			move(550,-550);                //500,-500
+		//	move(speedN,speedN);
+		//	UP_delay_ms(500);
+			move(650,-650);                //500,-500
 			UP_delay_ms(160);              //320
 		}
 		else if(nFence==2)
 		{
-			move(550,-550);               //500,-500
+			move(650,-650);               //500,-500
 			UP_delay_us(1);             //320
 		}
     else if(nFence==3)
@@ -393,44 +380,55 @@ int main()  //主函数
 		}
 		else if(nFence==7)
 		{
-			move(550,-450);                //500,-500
+			move(650,-650);                //500,-500
 			UP_delay_us(1);              //150
 		}
 	 }else if(nStage==1){
-  	UP_CDS_SetAngle(3,djDown3,800);
-	  UP_CDS_SetAngle(6,djDown6,800);
+  	UP_CDS_SetAngle(4,879,800);
+	  UP_CDS_SetAngle(5,258,800);
 	  if(nEdge==0){
 			if(nEnemy==1){
-				if(AD1<3000||AD2<3160){
-					move(-speedM,-speedM);
-					UP_delay_ms(200);
-				}else{
-			    move(speedR,speedR);
+			    move(speedM,speedM);
 				  UP_delay_us(1);
-				}
 			}else if(nEnemy==2){
-				move(speedN,-speedN);
-				UP_delay_ms(300);
+				move(speedM,-speedM);
+				UP_delay_ms(450);
+				move(speedM,speedM);
+				UP_delay_us(1);
 			}else if(nEnemy==3){
-				move(-speedN,speedN);
-				UP_delay_ms(150);
+				move(-speedM,speedM);
+				UP_delay_ms(160);
+				move(speedM,speedM);
+				UP_delay_us(1);
 			}else if(nEnemy==4){
-				move(speedN,-speedN);
-				UP_delay_ms(150);
-			}else if(nEnemy==5){
-				move(-speedm,speedm);
+				move(speedM,-speedM);
+				UP_delay_ms(160);
+				move(speedM,speedM);
+				UP_delay_us(1);
+			}
+			else if(nEnemy==5){
+				move(-speedM,speedM);
+				UP_delay_ms(90);
+				move(speedM,speedM);
 				UP_delay_us(1);
 			}else if(nEnemy==6){
-				move(speedm,-speedm);
+				move(speedM,-speedM);
+				UP_delay_ms(90);
+				move(speedM,speedM);
 				UP_delay_us(1);
-			}else if(nEnemy==7){
-				move(speedm,-speedm);
+			}
+			else if(nEnemy==7){
+				move(speedM,-speedM);
+				UP_delay_ms(380);
+				move(speedM,speedM);
 				UP_delay_us(1);
 			}else if(nEnemy==8){
-				move(-speedm,speedm);
+				move(-speedM,speedM);
+				UP_delay_ms(380);
+				move(speedM,speedM);
 				UP_delay_us(1);
 		  }else{
-			  move(400,400);
+			  move(450,450);
 			  UP_delay_us(1);
 			}
 		}else if(nEdge==1){
@@ -438,15 +436,15 @@ int main()  //主函数
       UP_delay_ms(400);
 		  move(speedN,-speedN);
 		  UP_delay_ms(200);
-			move(speedm,speedm);
-			UP_delay_ms(200);
+			move(speedN,speedN);
+			UP_delay_ms(100);
 		}else if(nEdge==2){
 			move(-speedN,-speedN);
 		  UP_delay_ms(400);
 		  move(-speedN,speedN);
 			UP_delay_ms(200);
-			move(speedm,speedm);
-			UP_delay_ms(200);
+			move(speedN,speedN);
+			UP_delay_ms(100);
 		}else if(nEdge==3){
 		  move(-speedN,-speedN);
 			UP_delay_ms(400);
@@ -454,10 +452,10 @@ int main()  //主函数
 		  UP_delay_ms(200);
 		}else if(nEdge==4){ 
 		  move(speedN,speedN);
-			UP_delay_ms(400);
+			UP_delay_ms(100);
 		}else if(nEdge==5){
 			move(speedN,speedN);
-		  UP_delay_ms(400);
+		  UP_delay_ms(100);
 		}else if(nEdge==6){
 		  //move(-speedN,-speedN);
       //UP_delay_ms(100);			
