@@ -7,10 +7,10 @@
 #define hdDown3          //灰度传感器3台下检测数值
 #define rightDJ  3       //左舵机号
 #define leftDJ   6       //右舵机号
-#define djUP4    265    //舵机3抬起
-#define djUP5    870       //舵机6抬起
-#define djDown4  879     //舵机3下降
-#define djDown5  258     //舵机6下降
+#define djUP4    440    //舵机3抬起
+#define djUP5    682       //舵机6抬起
+#define djDown4  991     //舵机3下降
+#define djDown5  130    //舵机6下降
 #define speedM   1000    //最大冲刺速度    
 #define speedN   600     //行驶速度
 #define speedR   900     //冲撞
@@ -302,8 +302,8 @@ int main()  //主函数
 	UP_CDS_SetMode(3,CDS_SEVMODE);
 	UP_CDS_SetMode(6,CDS_SEVMODE);
  
-	UP_CDS_SetAngle(4,265,800);
-	UP_CDS_SetAngle(5,870,800);
+	//UP_CDS_SetAngle(4,djUP4,800);
+	//UP_CDS_SetAngle(5,djUP5,800);
 	
 	while(1){
 		
@@ -311,9 +311,9 @@ int main()  //主函数
 		AD5=UP_ADC_GetIO(5);
 		UP_LCD_ShowInt(0,2,AD7);
 		UP_LCD_ShowInt(0,3,AD5);
-	  if(AD7==0&&AD5==0){
+	  if(AD7==1&&AD5==0){
 			move(speedM,speedM);
-			UP_delay_ms(850);
+			UP_delay_ms(950);
 			break;
 		}
 	}
@@ -336,16 +336,16 @@ int main()  //主函数
 		}		
 		
 	 if(nStage==0){
-		UP_CDS_SetAngle(4,265,900);
-	  UP_CDS_SetAngle(5,870,900);
+		UP_CDS_SetAngle(4,djUP4,1000);
+	  UP_CDS_SetAngle(5,djUP5,1000);
 		 
 		if(nFence==0)
 		{
 			move(-speedR,-speedR);
 			UP_delay_ms(400);
 			move(speedM,speedM);
-			UP_delay_ms(950);
-		}
+			UP_delay_ms(1300);
+		} 
 		else if(nFence==1)
 		{
 		//	move(speedN,speedN);
@@ -384,8 +384,8 @@ int main()  //主函数
 			UP_delay_us(1);              //150
 		}
 	 }else if(nStage==1){
-  	UP_CDS_SetAngle(4,879,800);
-	  UP_CDS_SetAngle(5,258,800);
+  	UP_CDS_SetAngle(4,djDown4,1000);
+	  UP_CDS_SetAngle(5,djDown5,1000);
 	  if(nEdge==0){
 			if(nEnemy==1){
 			    move(speedM,speedM);
@@ -416,8 +416,7 @@ int main()  //主函数
 				UP_delay_ms(90);
 				move(speedM,speedM);
 				UP_delay_us(1);
-			}
-			else if(nEnemy==7){
+			}else if(nEnemy==7){
 				move(speedM,-speedM);
 				UP_delay_ms(380);
 				move(speedM,speedM);
@@ -428,28 +427,28 @@ int main()  //主函数
 				move(speedM,speedM);
 				UP_delay_us(1);
 		  }else{
-			  move(450,450);
+			  move(500,500);
 			  UP_delay_us(1);
 			}
 		}else if(nEdge==1){
 			move(-speedN,-speedN);
       UP_delay_ms(400);
-		  move(speedN,-speedN);
-		  UP_delay_ms(200);
+		  move(speedM,-speedM);
+		  UP_delay_ms(450);
 			move(speedN,speedN);
 			UP_delay_ms(100);
 		}else if(nEdge==2){
 			move(-speedN,-speedN);
 		  UP_delay_ms(400);
-		  move(-speedN,speedN);
-			UP_delay_ms(200);
+		  move(-speedM,speedM);
+			UP_delay_ms(450);
 			move(speedN,speedN);
 			UP_delay_ms(100);
 		}else if(nEdge==3){
 		  move(-speedN,-speedN);
 			UP_delay_ms(400);
-			move(speedN,-speedN);
-		  UP_delay_ms(200);
+			move(speedM,-speedM);
+		  UP_delay_ms(450);
 		}else if(nEdge==4){ 
 		  move(speedN,speedN);
 			UP_delay_ms(100);
